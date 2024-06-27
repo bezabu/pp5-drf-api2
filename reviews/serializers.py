@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Movie, Review
+from reviews.models import Movie, Review
 
 
 class MovieSerializer(serializers.ModelSerializer):
@@ -13,7 +13,7 @@ class MovieSerializer(serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
-    movie_title = serializers.ReadOnlyField(source='movie_title.title')
+    movie_title = serializers.ReadOnlyField(source='movie.title')
 
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
@@ -26,7 +26,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = [
-            'id', 'owner', 'movie_title', 'created_at',
+            'id', 'owner', 'movie', 'movie_title', 'created_at',
             'updated_at', 'content', 'rating', 'is_owner', 'profile_id', 'profile_image'
         ]
 

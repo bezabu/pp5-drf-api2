@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator 
 
-RATING = ((0, "0 stars"), (1, "1 star"), (1, "2 stars"), (1, "3 stars"), (1, "4 stars"), (1, "5 stars"))
+RATING = ((0, "0 stars"), (1, "1 star"), (2, "2 stars"), (3, "3 stars"), (4, "4 stars"), (5, "5 stars"))
 
 class Movie(models.Model):
     title = models.CharField(max_length=255, blank=True)
@@ -23,7 +23,7 @@ class Movie(models.Model):
 class Review(models.Model):
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="reviews")
-    movie_title = models.ForeignKey(
+    movie = models.ForeignKey(
         Movie, on_delete=models.CASCADE, related_name="reviews")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
