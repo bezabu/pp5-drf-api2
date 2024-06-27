@@ -21,7 +21,7 @@ class Movie(models.Model):
         return f'{self.title}'
 
 class Review(models.Model):
-    author = models.ForeignKey(
+    owner = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="reviews")
     movie_title = models.ForeignKey(
         Movie, on_delete=models.CASCADE, related_name="reviews")

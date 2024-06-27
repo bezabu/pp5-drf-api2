@@ -12,12 +12,21 @@ class MovieSerializer(serializers.ModelSerializer):
         ]
 
 class ReviewSerializer(serializers.ModelSerializer):
-    author = serializers.ReadOnlyField(source='author.username')
+    owner = serializers.ReadOnlyField(source='owner.username')
     movie_title = serializers.ReadOnlyField(source='movie_title.title')
-    
+
+    is_owner = serializers.SerializerMethodField()
+    profile_id = serializers.ReadOnlyField(source='owner.profile.id')
+    profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+
+    def get_is_owner(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
+
     class Meta:
         model = Review
         fields = [
-            'id', 'author', 'movie_title', 'created_at',
-            'updated_at', 'content', 'rating'
+            'id', 'owner', 'movie_title', 'created_at',
+            'updated_at', 'content', 'rating', 'is_owner', 'profile_id', 'profile_image'
         ]
+
