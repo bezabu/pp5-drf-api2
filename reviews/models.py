@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator 
 
 RATING = ((0, "0 stars"), (1, "1 star"), (1, "2 stars"), (1, "3 stars"), (1, "4 stars"), (1, "5 stars"))
@@ -15,7 +16,7 @@ class Movie(models.Model):
 
 class Review(models.Model):
     author = models.ForeignKey(
-        Profile, on_delete=models.CASCADE, related_name="reviews")
+        User, on_delete=models.CASCADE, related_name="reviews")
     movie_title = models.ForeignKey(
         Movie, on_delete=models.CASCADE, related_name="reviews")
     created_at = models.DateTimeField(auto_now_add=True)
