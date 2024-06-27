@@ -12,7 +12,9 @@ class MovieSerializer(serializers.ModelSerializer):
         ]
 
 class ReviewSerializer(serializers.ModelSerializer):
-
+    author = serializers.ReadOnlyField(source='author.username')
+    movie_title = serializers.ReadOnlyField(source='movie_title.title')
+    
     class Meta:
         model = Review
         fields = [
