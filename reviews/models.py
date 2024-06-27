@@ -14,6 +14,12 @@ class Movie(models.Model):
         upload_to='images/', default='../clapper_board_vector_oi5zxv'
     )
 
+    class Meta:
+        ordering = ['-year']
+
+    def __str__(self):
+        return f'{self.title}'
+
 class Review(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="reviews")
@@ -28,4 +34,4 @@ class Review(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return f'{self.id} {self.movie_title}'
+        return f'{self.author} reviews {self.movie_title}'
