@@ -1,5 +1,6 @@
-from rest_framework import generics, permissions
-from django.core.exceptions import ValidationError, PermissionDenied
+from django.db.models import Count
+from rest_framework import generics, permissions, filters
+from django.core.exceptions import PermissionDenied
 from .models import Movie
 from .serializers import MovieSerializer
 from pp5_drf_api2.permissions import IsOwnerOrReadOnly, HasMoviePermissions, IsCuratorOrReadOnly
@@ -11,9 +12,15 @@ class MovieList(generics.ListAPIView):
     List all movies
     No Create view
     """
+    
+    queryset = Movie.objects.annotate(
+        reviews_count=Count('reviews', distinct=True)
+    ).order_by('-reviews_count')
+    
     serializer_class = MovieSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Movie.objects.all()
+    
+
 
 class MovieCreate(generics.CreateAPIView):
     """
