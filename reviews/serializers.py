@@ -2,15 +2,6 @@ from rest_framework import serializers
 from reviews.models import Movie, Review
 
 
-class MovieSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = Movie
-        fields = [
-            'id', 'title', 'year', 'director', 'genre',
-            'actors', 'image'
-        ]
-
 class ReviewSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     movie_title = serializers.ReadOnlyField(source='movie.title')
