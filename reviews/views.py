@@ -1,5 +1,6 @@
 from django.db.models import Count, Avg, Q
 from rest_framework import generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Movie, Review
 from .serializers import ReviewSerializer
 from pp5_drf_api2.permissions import IsOwnerOrReadOnly
@@ -25,6 +26,12 @@ class ReviewList(generics.ListCreateAPIView):
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'owner__followed__owner__profile',
+        'likes__owner__profile',
+        'owner__profile'
     ]
     search_fields = [
         'owner__username',
