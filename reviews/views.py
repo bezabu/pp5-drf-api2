@@ -23,13 +23,22 @@ class ReviewList(generics.ListCreateAPIView):
         likes_applaud_count=Count('likes', filter=Q(likes__flavour=0)),
     ).order_by('-created_at')
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'owner__username',
+        'movie__title',
     ]
     ordering_fields = [
         'likes_count',
         'comments_count',
         'likes__created_at',
         'likes_heart_count',
+        'likes_smile_count',
+        'likes_thumb_count',
+        'likes_laugh_count',
+        'likes_applaud_count',
     ]
 
     def perform_create(self, serializer):
