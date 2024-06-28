@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from reviews.models import Review
 
-LIKE_FLAVOUR = ((0, 'heart'), (1, 'smiley face'), (2, 'thumbs up'), (4, 'laugh'), (5, 'applause'))
+LIKE_FLAVOUR = ((0, 'heart'), (1, 'smiley face'), (2, 'thumbs up'), (3, 'laugh'), (4, 'applause'))
 
 class Like(models.Model):
     """
