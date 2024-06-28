@@ -34,4 +34,4 @@ class Review(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return f'{self.author} reviews {self.movie_title}'
+        return f'{self.owner} reviews {self.movie.title}'
