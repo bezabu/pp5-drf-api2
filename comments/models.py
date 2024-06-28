@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from posts.models import Review
+from reviews.models import Review
 
 
 class Comment(models.Model):
