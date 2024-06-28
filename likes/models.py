@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from reviews.models import review
+from reviews.models import Review
 
+LIKE_FLAVOUR = ((0, 'heart'), (1, 'smiley face'), (2, 'thumbs up'), (4, 'laugh'), (5, 'applause'))
 
 class Like(models.Model):
     """
@@ -14,7 +15,7 @@ class Like(models.Model):
         Review, related_name='likes', on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(auto_now_add=True)
-    flavour = models.SlugField()
+    flavour = models.IntegerField(choices=LIKE_FLAVOUR, default=0)
 
     class Meta:
         ordering = ['-created_at']
