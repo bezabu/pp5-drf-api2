@@ -1,4 +1,4 @@
-from django.db.models import Count
+from django.db.models import Count, Avg
 from rest_framework import generics, permissions, filters
 from django.core.exceptions import PermissionDenied
 from .models import Movie
@@ -14,12 +14,22 @@ class MovieList(generics.ListAPIView):
     """
     
     queryset = Movie.objects.annotate(
-        reviews_count=Count('reviews', distinct=True)
+        reviews_count=Count('reviews', distinct=True),
+        reviews_avg=Avg('reviews__rating')
     ).order_by('-reviews_count')
     
     serializer_class = MovieSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    
+    filter_backends = [
+        filters.OrderingFilter
+    ]
+    ordering_fields = [
+        'reviews_count',
+        'reviews_avg',
+        'year',
+        'director',
+        'genre',
+    ]
 
 
 class MovieCreate(generics.CreateAPIView):
@@ -37,6 +47,8 @@ class MovieDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = MovieSerializer
     permission_classes = [HasMoviePermissions]
     #permission_classes = [IsCuratorOrReadOnly]
-    queryset = Movie.objects.all()
+    queryset = Movie.objects.annotate(
+        reviews_count=Count('reviews', distinct=True)
+    ).order_by('-reviews_count')
 
 

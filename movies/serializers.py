@@ -4,6 +4,8 @@ from reviews.models import Movie
 
 class MovieSerializer(serializers.ModelSerializer):
     is_curator = serializers.SerializerMethodField()
+    reviews_count = serializers.ReadOnlyField()
+    reviews_avg = serializers.ReadOnlyField()
 
     def get_is_curator(self, obj):
         request = self.context['request']
@@ -13,5 +15,5 @@ class MovieSerializer(serializers.ModelSerializer):
         model = Movie
         fields = [
             'id', 'title', 'year', 'director', 'genre',
-            'actors', 'image', 'is_curator'
+            'actors', 'image', 'is_curator', 'reviews_count', 'reviews_avg',
         ]
