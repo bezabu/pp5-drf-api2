@@ -54,12 +54,12 @@ INSTALLED_APPS = [
     'cloudinary',
     'rest_framework',
     'django_filters',
-    'rest_framework.authtoken', 
+    'rest_framework.authtoken',
     'dj_rest_auth',
-    'django.contrib.sites', 
-    'allauth', 
-    'allauth.account', 
-    'allauth.socialaccount', 
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'dj_rest_auth.registration',
     'profiles',
     'movies',
@@ -88,6 +88,7 @@ REST_AUTH_SERIALIZERS = {
     }
 
 MIDDLEWARE = [
+    'allauth.account.middleware.AccountMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -95,6 +96,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'pp5_drf_api2.urls'
