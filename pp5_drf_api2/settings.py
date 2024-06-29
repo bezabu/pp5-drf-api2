@@ -88,7 +88,7 @@ REST_AUTH_SERIALIZERS = {
     }
 
 MIDDLEWARE = [
-    'allauth.account.middleware.AccountMiddleware',
+    #'allauth.account.middleware.AccountMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -117,7 +117,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'pp5_drf_api2.wsgi.application'
+#WSGI_APPLICATION = 'pp5_drf_api2.wsgi.application'
 
 
 # Database
