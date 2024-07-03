@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from reviews.models import Movie
+from movies.models import Movie
 
 
 class MovieSerializer(serializers.ModelSerializer):
