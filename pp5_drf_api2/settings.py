@@ -43,7 +43,7 @@ DEBUG = 'DEV' in os.environ
 #ALLOWED_HOSTS = ['8000-bezabu-pp5drfapi2-rlp5a9wmcws.ws-eu114.gitpod.io', 'bb-pp5-movie-review-app-363d95a342e4.herokuapp.com']
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOST'),
-   'localhost',
+   'localhost', '8000-bezabu-pp5drfapi2-rlp5a9wmcws.ws-eu115.gitpod.io'
 ]
 
 # Application definition
@@ -68,11 +68,14 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'corsheaders',
     'profiles',
+    'genres',
     'movies',
     'reviews',
     'comments',
     'likes',
     'follows',
+    'votes',
+    
 ]
 SITE_ID = 1
 
