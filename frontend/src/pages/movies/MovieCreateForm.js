@@ -33,12 +33,13 @@ function MovieCreateForm() {
   const [movieData, setMovieData] = useState({
     title: "",
     year: "",
+    genre: 1,
     director: "",
     actors: "",
     image: "",
 
   });
-  const { title, year, director, actors, image } = movieData;
+  const { title, year, genre, director, actors, image } = movieData;
 
   const imageInput = useRef(null);
 
@@ -68,16 +69,16 @@ function MovieCreateForm() {
 
     formData.append('title', title);
     formData.append('year', year);
-    formData.append('genre', 1);
+    formData.append('genre', genre);
     formData.append('director', director);
     formData.append('actors', actors);
     formData.append('image', imageInput.current.files[0]);
 
     try {
       console.log('attempt movie create');
-      console.log(formData);
-      const {data} = await axiosReq.post('/movies/', formData);
-      console.log(data);;
+      console.log(title, year, genre, director, actors, image);
+      const {data} = await axiosReq.post('/movies/add/', formData);
+      console.log(data);
       history.push(`/movies/${data.id}`)
     } catch(err) {
       console.log(err)

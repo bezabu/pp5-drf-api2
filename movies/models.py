@@ -4,7 +4,7 @@ from genres.models import Genre
 
 class Movie(models.Model):
     title = models.CharField(max_length=255, blank=True)
-    year = models.DateField(auto_now=False, auto_now_add=False)
+    year = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
     director = models.CharField(max_length=255, blank=True)
     #genre = models.CharField(max_length=255, blank=True)
     genre = models.ManyToManyField(
