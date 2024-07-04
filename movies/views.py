@@ -7,7 +7,7 @@ from pp5_drf_api2.permissions import IsOwnerOrReadOnly, HasMoviePermissions, IsC
 
 
 
-class MovieList(generics.ListAPIView):
+class MovieList(generics.ListCreateAPIView):
     """
     List all movies
     No Create view
@@ -40,6 +40,8 @@ class MovieCreate(generics.CreateAPIView):
     serializer_class = MovieSerializer
     permission_classes = [permissions.IsAuthenticated]
     #permission_classes = [permissions.IsAuthenticated, IsCuratorOrReadOnly]
+
+
 
 class MovieDetail(generics.RetrieveUpdateDestroyAPIView):
     """
