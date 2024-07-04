@@ -125,8 +125,12 @@ MIDDLEWARE = [
 ]
 
 
+#CORS_ALLOWED_ORIGINS = [
+#    os.environ.get('CLIENT_ORIGIN'), 
+#]
+
 CORS_ALLOWED_ORIGINS = [
-    os.environ.get('CLIENT_ORIGIN'), 'https://bb-pp5-movie-review-app-363d95a342e4.herokuapp.com'
+    'https://bb-pp5-movie-review-app-363d95a342e4.herokuapp.com'
 ]
 
 
