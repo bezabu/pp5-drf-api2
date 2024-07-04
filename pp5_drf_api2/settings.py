@@ -43,7 +43,7 @@ DEBUG = 'DEV' in os.environ
 #ALLOWED_HOSTS = ['8000-bezabu-pp5drfapi2-rlp5a9wmcws.ws-eu114.gitpod.io', 'bb-pp5-movie-review-app-363d95a342e4.herokuapp.com']
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOST'),
-   'localhost', '8000-bezabu-pp5drfapi2-rlp5a9wmcws.ws-eu115.gitpod.io'
+   'localhost', '8000-bezabu-pp5drfapi2-rlp5a9wmcws.ws-eu115.gitpod.io',
 ]
 
 # Application definition
@@ -92,10 +92,11 @@ REST_FRAMEWORK = {
 
     }
 
-if 'DEV' not in os.environ:
-    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
-        'rest_framework.renderers.JSONRenderer',
-    ]
+
+#if 'DEV' not in os.environ:
+#    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+#        'rest_framework.renderers.JSONRenderer',
+#    ]
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
