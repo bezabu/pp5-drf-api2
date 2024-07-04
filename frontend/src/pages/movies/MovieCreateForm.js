@@ -68,14 +68,15 @@ function MovieCreateForm() {
 
     formData.append('title', title);
     formData.append('year', year);
-    //formData.append('genre', 1);
+    formData.append('genre', 1);
     formData.append('director', director);
     formData.append('actors', actors);
     formData.append('image', imageInput.current.files[0]);
 
     try {
-      console.log('attempt movie create')
-      const {data} = await axiosReq.post('/movies/add/', formData);
+      console.log('attempt movie create');
+      console.log(formData);
+      const {data} = await axiosReq.post('/movies/', formData);
       console.log(data);;
       history.push(`/movies/${data.id}`)
     } catch(err) {
