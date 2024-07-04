@@ -43,7 +43,7 @@ DEBUG = 'DEV' in os.environ
 #ALLOWED_HOSTS = ['8000-bezabu-pp5drfapi2-rlp5a9wmcws.ws-eu114.gitpod.io', 'bb-pp5-movie-review-app-363d95a342e4.herokuapp.com']
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOST'),
-   'localhost', '8000-bezabu-pp5drfapi2-rlp5a9wmcws.ws-eu115.gitpod.io',
+   'localhost', '8000-bezabu-pp5drfapi2-rlp5a9wmcws.ws-eu115.gitpod.io', 'https://bb-pp5-movie-review-app-363d95a342e4.herokuapp.com'
 ]
 
 # Application definition
@@ -103,6 +103,7 @@ JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
+JWT_AUTH_HTTPONLY=False
 
 
 REST_AUTH_SERIALIZERS = {
