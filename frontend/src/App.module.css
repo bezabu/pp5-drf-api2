@@ -1,0 +1,33 @@
+  .App {
+    font-family: "Kanit", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    text-align: center;
+    background-color: #333333;
+    min-height: 100vh;
+    color:#dadada;
+  }
+    
+  .Main {
+    padding-top: 81px;
+  }
+  h1 {
+    font-family: "Arvo", serif;
+    color: #202020;
+  }
+
+  h2 {
+    font-family: "Arvo", serif;
+    color: #dadada;
+  }
+  
+  a {
+    color: #6a98bd;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color ease-in-out 0.2s;
+  }
