@@ -15,7 +15,7 @@ import Asset from "../../components/Asset";
 import axios from "axios";
 //import { useGenreData, useSetGenreData } from "../../contexts/GenreDataContext";
 import GenreOptions from "./GenreOptions";
-import { Image } from "react-bootstrap";
+import { Alert, Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -139,7 +139,11 @@ function ReviewCreateForm() {
                 onChange={handleChange}
               />
             </Form.Group>
-            
+            {errors?.movie?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
             <Form.Group className="">
             <Form.Label className="d-none">Content</Form.Label>
               <Form.Control
@@ -151,6 +155,13 @@ function ReviewCreateForm() {
                 onChange={handleChange}
               />
             </Form.Group>
+            {errors?.content?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+
             {['radio'].map((type) => (
     <div key={`inline-${type}`} className="mb-3">
       <i class="fa-regular fa-star"></i>
@@ -191,7 +202,11 @@ function ReviewCreateForm() {
       <Form.Check inline label="Five stars" name="rating" value="5" type={type} id={`inline-${type}-6`} />
     </div>
   ))}
-            
+       {errors?.rating?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}     
 
             
             <div className="d-md-none">{textFields}</div>
