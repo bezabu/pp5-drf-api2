@@ -7,7 +7,7 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import NavLink from "react-router-dom/NavLink";
 import MovieCreateForm from "./pages/movies/MovieCreateForm";
-import ReviewCreateForm from "./pages/movies/ReviewCreateForm";
+import ReviewCreateForm from "./pages/reviews/ReviewCreateForm";
 
 
 
