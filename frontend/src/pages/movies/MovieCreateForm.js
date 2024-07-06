@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-
+import Alert from "react-bootstrap/Alert";
 import Upload from "../../assets/upload.png";
 
 import styles from "../../styles/MovieCreateEditForm.module.css";
@@ -121,7 +121,7 @@ function MovieCreateForm() {
     
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => {}}
+        onClick={() => history.goBack()}
       >
         cancel
       </Button>
@@ -151,6 +151,11 @@ function MovieCreateForm() {
                 onChange={handleChange}
               />
             </Form.Group>
+            {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
             <Form.Group className="">
             <Form.Label className="d-none">Year</Form.Label>
               <Form.Control
@@ -162,6 +167,12 @@ function MovieCreateForm() {
                 onChange={handleChange}
               />
             </Form.Group>
+            {errors?.year?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
             <Form.Group className="">
             <Form.Label className="d-none">Director</Form.Label>
               <Form.Control
@@ -173,7 +184,11 @@ function MovieCreateForm() {
                 onChange={handleChange}
               />
             </Form.Group>
-            
+            {errors?.director?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
             
             {/*console.log(JSON.stringify(genreData))*/}
@@ -192,7 +207,11 @@ function MovieCreateForm() {
                 onChange={handleChange}
               />
             </Form.Group>
-
+            {errors?.actors?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
             <Form.Group className="text-center">
               {image ? (
@@ -226,8 +245,14 @@ function MovieCreateForm() {
                 accept="image/*"
                 onChange={handleChangeImage}
                 ref={imageInput}
+                custom
               />
             </Form.Group>
+            {errors?.image?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>

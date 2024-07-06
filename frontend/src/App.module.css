@@ -31,3 +31,27 @@
     text-decoration: none;
     transition: color ease-in-out 0.2s;
   }
+
+  .FillerImage {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .Image {
+    max-height: 40vh;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  figure {
+    text-align: center;
+    display: inline-block;
+  }
+
+  .Content {
+    background-color: #333333;
+    padding: 10px;
+    border-radius: 2px;
+    border: 1px solid #dadadf;
+  }
