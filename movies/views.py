@@ -38,8 +38,8 @@ class MovieCreate(generics.CreateAPIView):
     Only accessible by movie curators
     """
     serializer_class = MovieSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    #permission_classes = [permissions.IsAuthenticated, IsCuratorOrReadOnly]
+    #permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, IsCuratorOrReadOnly]
 
 
 
