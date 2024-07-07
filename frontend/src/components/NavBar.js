@@ -36,7 +36,7 @@ const NavBar = () => {
     activeClassName={styles.Active}
     to="/movies/create"
     >
-      <i class="fa-solid fa-film"></i>Add Movie
+      <i className="fa-solid fa-film"></i>Add Movie
       </NavLink>
   
   )
@@ -52,35 +52,35 @@ const NavBar = () => {
     activeClassName={styles.Active}
     to="/feed"
     >
-      <i class="fa-solid fa-ticket"></i>Feed
+      <i className="fa-solid fa-ticket"></i>Feed
       </NavLink>
       <NavLink
     className={styles.NavLink}
     activeClassName={styles.Active}
     to="/feed"
     >
-      <i class="fa-solid fa-video"></i>New
+      <i className="fa-solid fa-video"></i>New
       </NavLink>
       <NavLink
     className={styles.NavLink}
     activeClassName={styles.Active}
     to="/new"
     >
-      <i class="fa-solid fa-star"></i>Popular
+      <i className="fa-solid fa-star"></i>Popular
       </NavLink>
       <NavLink
     className={styles.NavLink}
     activeClassName={styles.Active}
     to="/new"
     >
-      <i class="fa-solid fa-heart"></i>Liked
+      <i className="fa-solid fa-heart"></i>Liked
       </NavLink>
       <NavLink
             className={styles.NavLink}
             to="/"
             onClick={handleSignOut}
             >
-              <i class="fa-solid fa-right-from-bracket"></i>Sign out
+              <i className="fa-solid fa-right-from-bracket"></i>Sign out
           </NavLink>
       <NavLink
     className={styles.NavLink}
@@ -118,7 +118,7 @@ const NavBar = () => {
     activeClassName={styles.Active}
     to="/movies"
     >
-      <i class="fa-solid fa-clapperboard"></i>Movies
+      <i className="fa-solid fa-clapperboard"></i>Movies
       </NavLink>
       {currentUser ? loggedInIcons : loggedOutIcons}
     </Nav>

@@ -1,8 +1,10 @@
 import React from 'react'
 import styles from '../../styles/Review.module.css'
-import { Card, Media } from 'react-bootstrap'
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import Avatar from '../../components/Avatar'
+import { axiosRes } from '../../api/axiosDefaults';
 const Review = (props) => {
     const {
         id,
@@ -25,8 +27,47 @@ const Review = (props) => {
         likes_thumb_count,
         likes_laugh_count,
         likes_applaud_count,
-        reviewPage
+        reviewPage,
+        setReviews,
     } = props
+
+    const currentUser = useCurrentUser();
+    //const is_owner = currentUser?.username === owner;
+
+    const handleLikeHeart = async () => {
+        try {
+            const {data} = await axiosRes.post('/likes/', {review:id});
+            setReviews((prevReviews) => ({
+                ...prevReviews,
+                results: prevReviews.results.map((review)=> {
+                    return review.id === id
+                    ? {...review, likes_count: review.likes_count +1, like_id: data.id}
+                    : review;
+                })
+            }));
+        } catch(err){
+            console.lof(err);
+        }
+    };
+
+    const handleUnlikeHeart = async () => {
+        try {
+          await axiosRes.delete(`/likes/${like_id}/`);
+          setReviews((prevReviews) => ({
+            ...prevReviews,
+            results: prevReviews.results.map((review) => {
+              return review.id === id
+                ? ({ ...review, likes_count: review.likes_count - 1, like_id: null }
+                )
+                : review;
+            }),
+          }));
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+
   return (
     <Card className={styles.Review}>
         <Card.Body>
@@ -49,6 +90,29 @@ const Review = (props) => {
             {rating} stars
 
         </Card.Text>
+        <div className={styles.ReviewBar}>
+            {is_owner ? (
+                <OverlayTrigger placement="top" overlay={<Tooltip>You can't like your own review!</Tooltip>}>
+                    <i className="fa-regular fa-heart"></i>
+                </OverlayTrigger>
+            ) : like_id ? (
+                <span onClick={handleUnlikeHeart}><i className={`fa-regular fa-heart ${styles.Heart}`}></i></span>
+            ) : currentUser ? (
+                <span onClick={handleLikeHeart}>
+                    <i className={`fa-regular fa-heart ${styles.HeartOutline}`}></i>
+                </span>
+            ) : (
+                <OverlayTrigger placement="top" overlay={<Tooltip>Log in to like reviews</Tooltip>}>
+                    <i className="fa-regular fa-heart"></i>
+                </OverlayTrigger>
+            )}
+            {likes_count}
+
+            <Link to={`/reviews/${id}`}>
+            <i class="fa-regular fa-comment"></i>
+            </Link>
+            {comments_count}
+        </div>
     </Card>
   )
 }
