@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import appStyles from "../../App.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
+import Movie from "./Movie";
 
 function MoviePage() {
   const { id } = useParams();
@@ -34,7 +35,7 @@ function MoviePage() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popular profiles for mobile</p>
-        <p>Post component</p>
+        <Movie {...post.results[0]} setMovies={setMovie}/>
         <Container className={appStyles.Content}>
           Comments
         </Container>
