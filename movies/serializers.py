@@ -7,6 +7,7 @@ class MovieSerializer(serializers.ModelSerializer):
     reviews_count = serializers.ReadOnlyField()
     reviews_avg = serializers.ReadOnlyField()
 
+
     def get_is_curator(self, obj):
         request = self.context['request']
         return request.user.groups.filter(name='Movie Curator').exists()

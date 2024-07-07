@@ -1,4 +1,4 @@
-.Movie {
+.Review {
     background-color: #333333;
     border: 1px solid #dadadf;
     border-radius: 2px;
@@ -6,7 +6,7 @@
     text-align: center;
   }
   
-  .Movie figure,
+  .Review figure,
   h5 {
     margin: 0 0;
   }

@@ -7,21 +7,22 @@ import Container from "react-bootstrap/Container";
 import appStyles from "../../App.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
-import Movie from "./Movie";
+import Review from "./Review";
 
-function MoviePage() {
+
+function ReviewPage() {
   const { id } = useParams();
-  const [ post, setMovie ] = useState({results: []});
+  const [ review, setReview ] = useState({results: []});
 
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{data: movie}] = await Promise.all([
-          axiosReq.get(`/movies/${id}`)
+        const [{data: review}] = await Promise.all([
+          axiosReq.get(`/reviews/${id}`)
         ])
-        setMovie({results: [movie]})
-        console.log(movie)
+        setReview({results: [review]})
+        console.log(review)
       } catch(err){
         console.log(err)
       }
@@ -35,7 +36,7 @@ function MoviePage() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popular profiles for mobile</p>
-        <Movie {...post.results[0]} setMovies={setMovie} moviePage />
+        <Review {...review.results[0]} setReviews={setReview} reviewPage />
         <Container className={appStyles.Content}>
           Comments
         </Container>
@@ -47,4 +48,4 @@ function MoviePage() {
   );
 }
 
-export default MoviePage;
+export default ReviewPage;
