@@ -8,6 +8,7 @@ import SignInForm from "./pages/auth/SignInForm";
 import NavLink from "react-router-dom/NavLink";
 import MovieCreateForm from "./pages/movies/MovieCreateForm";
 import ReviewCreateForm from "./pages/reviews/ReviewCreateForm";
+import MoviePage from "./pages/movies/MoviePage";
 
 
 
@@ -28,6 +29,7 @@ function App() {
           {/*<Route exact path="/movies" render={() => <h2>Movies</h2>} />*/}
           <Route exact path="/movies/create" render={() => <MovieCreateForm />} />
           <Route exact path="/reviews/create" render={() => <ReviewCreateForm />} />
+          <Route exact path="/movies/:id" render={() => <MoviePage />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
         <p>List of <NavLink to="/movies">movies</NavLink></p>
