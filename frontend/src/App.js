@@ -13,6 +13,7 @@ import ReviewPage from "./pages/reviews/ReviewPage";
 import ReviewsPage from "./pages/reviews/ReviewsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import MoviesPage from "./pages/movies/MoviesPage";
+import GenrePicker from "./pages/movies/GenrePicker";
 
 
 
@@ -50,6 +51,7 @@ function App() {
           <Route exact path="/reviews/create" render={() => <ReviewCreateForm />} />
           <Route exact path="/reviews/:id" render={() => <ReviewPage />} />
           <Route exact path="/movies/:id" render={() => <MoviePage />} />
+          <Route exact path="/genres" render={() => <GenrePicker />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
         <p>List of <NavLink to="/movies">movies</NavLink></p>

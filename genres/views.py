@@ -1,5 +1,6 @@
 from django.db.models import Count, Avg
 from rest_framework import generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from django.core.exceptions import PermissionDenied
 from .models import Genre
 from .serializers import GenreSerializer
@@ -21,7 +22,8 @@ class GenreList(generics.ListAPIView):
     serializer_class = GenreSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        DjangoFilterBackend,
     ]
     ordering_fields = [
         'moviess_count',

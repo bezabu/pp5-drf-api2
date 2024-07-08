@@ -35,7 +35,7 @@ const MoviesPage = ({ message, filter=""}) => {
             {movies.results.length ? (
                 //has length
                 movies.results.map((movie) => (
-                    <Movie key={movie.id} {...movie} setMovies={setMovies} />
+                    <Movie key={movie.id} {...movie} setMovies={setMovies}/>
                 ))
             ) : (
                 //no length
