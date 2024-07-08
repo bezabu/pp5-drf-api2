@@ -8,6 +8,8 @@ import Asset from '../../components/Asset';
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no_results_inverted.png"
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from '../../utils/utils';
 
 const MoviesPage = ({ message, filter=""}) => {
     const [movies, setMovies ] = useState({ results: [] });
@@ -58,9 +60,18 @@ const MoviesPage = ({ message, filter=""}) => {
             <>
             {movies.results.length ? (
                 //has length
-                movies.results.map((movie) => (
-                    <Movie key={movie.id} {...movie} setMovies={setMovies}/>
-                ))
+                <InfiniteScroll
+                    children={
+                        movies.results.map((movie) => (
+                            <Movie key={movie.id} {...movie} setMovies={setMovies}/>
+                        ))
+                    }
+                    dataLength={movies.results.length}
+                    loader={<Asset spinner />}
+                    hasMore={!!movies.next}
+                    next={() => fetchMoreData(movies, setMovies)}
+                />
+                
             ) : (
                 //no length
                 <Container className={appStyles.Content}>

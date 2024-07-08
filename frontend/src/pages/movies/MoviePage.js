@@ -11,8 +11,8 @@ import Movie from "./Movie";
 
 function MoviePage() {
   const { id } = useParams();
-  const [ post, setMovie ] = useState({results: []});
-
+  const [ movie, setMovie ] = useState({results: []});
+  console.log(id);
 
   useEffect(() => {
     const handleMount = async () => {
@@ -21,28 +21,26 @@ function MoviePage() {
           axiosReq.get(`/movies/${id}`)
         ])
         setMovie({results: [movie]})
-        console.log(movie)
+        //console.log(data)
       } catch(err){
         console.log(err)
       }
+      console.log(movie);
     }
 
     handleMount()
+    
   }, [id]);
 
 
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular profiles for mobile</p>
-        <Movie {...post.results[0]} setMovies={setMovie} moviePage />
-        <Container className={appStyles.Content}>
-          Comments
-        </Container>
+
+        <Movie {...movie.results[0]} setMovies={setMovie} moviePage />
+        
       </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Popular profiles for desktop
-      </Col>
+     
     </Row>
   );
 }

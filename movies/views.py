@@ -59,7 +59,7 @@ class MovieDetail(generics.RetrieveUpdateDestroyAPIView):
     Retrieve a movie and edit or delete it if you own it.
     """
     serializer_class = MovieSerializer
-    permission_classes = [HasMoviePermissions]
+    permission_classes = [IsOwnerOrReadOnly]
     #permission_classes = [IsCuratorOrReadOnly]
     queryset = Movie.objects.annotate(
         reviews_count=Count('reviews', distinct=True)

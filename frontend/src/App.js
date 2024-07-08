@@ -48,9 +48,10 @@ function App() {
           message="No results found. Adjust search keywords."
           />} />
           <Route exact path="/movies/create" render={() => <MovieCreateForm />} />
+          <Route exact path="/movies/:id" render={() => <MoviePage />} />
           <Route exact path="/reviews/create" render={() => <ReviewCreateForm />} />
           <Route exact path="/reviews/:id" render={() => <ReviewPage />} />
-          <Route exact path="/movies/:id" render={() => <MoviePage />} />
+
           <Route exact path="/genres" render={() => <GenrePicker />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>

@@ -12,6 +12,8 @@ import { axiosReq } from "../../api/axiosDefaults";
 import Review from "./Review";
 import NoResults from "../../assets/no_results_inverted.png"
 import Asset from "../../components/Asset";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 function ReviewsPage({ message, filter="" }) {
   const [ reviews, setReviews ] = useState({ results: [] });
@@ -61,9 +63,18 @@ function ReviewsPage({ message, filter="" }) {
         {hasLoaded ? (
             <>
             {reviews.results.length ? (
-                reviews.results.map((review) => (
-                    <Review key={review.id} {...review} setReviews={setReviews} />
-                ))
+                <InfiniteScroll
+                    children={
+                        reviews.results.map((review) => (
+                            <Review key={review.id} {...review} setReviews={setReviews} />
+                        ))
+                    }
+                    dataLength={reviews.results.length}
+                    loader={<Asset spinner />}
+                    hasMore={!!reviews.next}
+                    next={() => fetchMoreData(reviews, setReviews)}
+                />
+                
             ) : (
                 <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />

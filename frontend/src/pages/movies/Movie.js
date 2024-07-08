@@ -6,6 +6,7 @@ import NoResults from "../../assets/no_results_inverted.png"
 import appStyles from "../../App.module.css";
 import Asset from '../../components/Asset'
 import GenreButton from '../../components/GenreButton'
+import { Link } from 'react-router-dom/cjs/react-router-dom'
 
 
 const Movie = (props) => {
@@ -35,7 +36,9 @@ const Movie = (props) => {
         <Card.Body>
             {title && <Card.Title className='text-center'>{title} - {year}</Card.Title>}
         </Card.Body>
+        <Link to={`/movies/${id}`}>
         <Card.Img src={image} alt={title} />
+        </Link>
         <Card.Text>
             
 
