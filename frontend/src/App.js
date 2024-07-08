@@ -5,18 +5,21 @@ import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
-import NavLink from "react-router-dom/NavLink";
+import { NavLink } from "react-router-dom";
 import MovieCreateForm from "./pages/movies/MovieCreateForm";
 import ReviewCreateForm from "./pages/reviews/ReviewCreateForm";
 import MoviePage from "./pages/movies/MoviePage";
 import ReviewPage from "./pages/reviews/ReviewPage";
+import ReviewsPage from "./pages/reviews/ReviewsPage";
+import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 
 
 
 
 function App() {
-  
+  const currentUser = useCurrentUser();
+  const profile_id = currentUser?.profile_id || ""
 
   return (
     
@@ -24,7 +27,19 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route exact path="/" render={() => <h2>Home page</h2>} />
+          <Route exact path="/" render={() => (
+            <ReviewsPage message="No results found. Adjust search keywords."/>
+            )} />
+            <Route exact path="/feed" render={() => (
+            <ReviewsPage message="No results found. Adjust search keywords or follow a user."
+            filter={`owner__followed__owner__profile=${profile_id}&`}
+            />
+            )} />
+            <Route exact path="/liked" render={() => (
+            <ReviewsPage message="No results found. Adjust search keywords or like a review."
+            filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+            />
+            )} />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           {/*<Route exact path="/movies" render={() => <h2>Movies</h2>} />*/}
