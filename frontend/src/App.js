@@ -12,6 +12,7 @@ import MoviePage from "./pages/movies/MoviePage";
 import ReviewPage from "./pages/reviews/ReviewPage";
 import ReviewsPage from "./pages/reviews/ReviewsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
+import MoviesPage from "./pages/movies/MoviesPage";
 
 
 
@@ -42,7 +43,9 @@ function App() {
             )} />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
-          {/*<Route exact path="/movies" render={() => <h2>Movies</h2>} />*/}
+          <Route exact path="/movies" render={() => <MoviesPage
+          message="No results found. Adjust search keywords."
+          />} />
           <Route exact path="/movies/create" render={() => <MovieCreateForm />} />
           <Route exact path="/reviews/create" render={() => <ReviewCreateForm />} />
           <Route exact path="/reviews/:id" render={() => <ReviewPage />} />
