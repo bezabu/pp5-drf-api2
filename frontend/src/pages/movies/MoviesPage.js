@@ -19,7 +19,7 @@ const MoviesPage = ({ message, filter=""}) => {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const {data} = await axiosReq.get(`/movies/?${filter}`);
+                const {data} = await axiosReq.get(`/movies/?${filter}search=${query}`);
                 setMovies(data);
                 setHasLoaded(true);
             } catch(err){
