@@ -45,7 +45,7 @@ const Movie = (props) => {
                     {console.log(gen)}
                     <GenrePicker
                     //filter={gen}
-                    filter={`genre__id=${gen}&`}
+                    filter={`id=${gen}&`}
                     key={gen} {...gen}
                     />
                     
@@ -57,9 +57,6 @@ const Movie = (props) => {
               </Container>
             )}
 
-
-
-            {genre}<br></br>
             {reviews_count} reviews<br></br>
             {director}<br></br>
             {actors}<br></br>

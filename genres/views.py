@@ -25,11 +25,14 @@ class GenreList(generics.ListAPIView):
         filters.OrderingFilter,
         DjangoFilterBackend,
     ]
+    filterset_fields = [
+        'id',
+    ]
     ordering_fields = [
         'moviess_count',
         'moviess_avg',
     ]
-
+    
 
 class GenreCreate(generics.CreateAPIView):
     """

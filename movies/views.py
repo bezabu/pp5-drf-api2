@@ -23,7 +23,14 @@ class MovieList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filter_backends = [
         filters.OrderingFilter,
+        filters.SearchFilter,
         DjangoFilterBackend,
+    ]
+    search_fields = [
+        'title',
+        'director',
+        'genre__name',
+        'actors',
     ]
     ordering_fields = [
         'reviews_count',
@@ -32,6 +39,8 @@ class MovieList(generics.ListCreateAPIView):
         'director',
         'genre',
     ]
+    
+    
 
 
 class MovieCreate(generics.CreateAPIView):

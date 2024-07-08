@@ -109,7 +109,7 @@ const Review = (props) => {
             {likes_count}
 
             <Link to={`/reviews/${id}`}>
-            <i class="fa-regular fa-comment"></i>
+            <i className="fa-regular fa-comment"></i>
             </Link>
             {comments_count}
         </div>

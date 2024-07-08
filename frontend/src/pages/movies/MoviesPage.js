@@ -1,7 +1,8 @@
 
 import React, { useEffect, useState } from 'react'
 import appStyles from "../../App.module.css";
-import { Col, Container, Row } from 'react-bootstrap';
+import styles from "../../styles/ReviewsPage.module.css";
+import { Col, Container, Form, Row } from 'react-bootstrap';
 import Movie from './Movie';
 import Asset from '../../components/Asset';
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
@@ -12,6 +13,8 @@ const MoviesPage = ({ message, filter=""}) => {
     const [movies, setMovies ] = useState({ results: [] });
     const [ hasLoaded, setHasLoaded ] = useState(false);
     const { pathname } = useLocation();
+
+    const [ query, setQuery ] = useState("");
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -25,11 +28,32 @@ const MoviesPage = ({ message, filter=""}) => {
         };
 
         setHasLoaded(false);
-        fetchMovies();
-    }, [filter, pathname]);
+        const timer = setTimeout(() => {
+            fetchMovies();
+        }, 600)
+        return () => {
+            clearTimeout(timer)
+        }
+        
+    }, [filter, query, pathname]);
   return (
     <Row>
         <Col>
+
+        <i className={`fas fa-search ${styles.SearchIcon}`} />
+        <Form className={styles.SearchBar}
+        onSubmit={(event) => event.preventDefault()}
+        >
+        <Form.Control
+        type="text"
+        className="mr-sm-2"
+        placeholder="search movies"
+        value={query}
+        onChange={(event) => setQuery(event.target.value)}
+        />
+        </Form>
+
+
         {hasLoaded ? (
             <>
             {movies.results.length ? (

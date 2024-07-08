@@ -43,7 +43,7 @@ function GenrePicker({ genreKey, setGenreKey, message, filter = ""}) {
                 //has length
                 genres.results.map((genre) => (
                     <>
-                    <GenreButton key={genre.id} {...genre} color={genre.color} name={genre.name} setGenres={setGenres} />
+                    <GenreButton key={genre} {...genre} color={genre.color} name={genre.name} setGenres={setGenres} />
 
                     </>
                 ))
