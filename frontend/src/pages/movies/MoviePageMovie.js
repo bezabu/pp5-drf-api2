@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../../styles/Movie.module.css'
 import { Card, Container, Media } from 'react-bootstrap'
 import GenrePicker from './GenrePicker'
@@ -6,16 +6,17 @@ import NoResults from "../../assets/no_results_inverted.png"
 import appStyles from "../../App.module.css";
 import Asset from '../../components/Asset'
 import GenreButton from '../../components/GenreButton'
-import { Link } from 'react-router-dom/cjs/react-router-dom'
+import { Link, useParams } from 'react-router-dom/cjs/react-router-dom'
 import { useCurrentUser } from '../../contexts/CurrentUserContext'
+import { axiosReq } from '../../api/axiosDefaults'
 
 
-const Movie = (props) => {
+function MoviePageMovie(props) {
+    const { id } = useParams();
     const {
-        id,
         title,
-        year,
         genre,
+        year,
         director,
         actors,
         reviews_count,
@@ -28,6 +29,17 @@ const Movie = (props) => {
     //console.log(genre);
 
     const currentUser = useCurrentUser();
+    
+    const [genres, setGenres ] = useState({ results: [] });
+
+    const fetchMovieGenres = async () => {
+    const { data } = await Promise.all([
+        axiosReq.get(`/movies/${id}`)
+      ])
+      console.log(data)
+}
+    
+
 
   return (
     <Card className={styles.Movie}>
@@ -45,7 +57,8 @@ const Movie = (props) => {
         <Card.Img src={image} alt={title} />
         </Link>
         <Card.Text>
-
+            {genre}
+                {/*}
                 {genre?.length ? (
                 genre.map((gen) => (
                     <>
@@ -62,6 +75,7 @@ const Movie = (props) => {
                 <Asset src={NoResults} />
               </Container>
             )}
+              */}
 
             {reviews_count} reviews<br></br>
             {director}<br></br>
@@ -71,4 +85,4 @@ const Movie = (props) => {
   )
 }
 
-export default Movie
+export default MoviePageMovie

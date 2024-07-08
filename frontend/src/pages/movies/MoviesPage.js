@@ -63,7 +63,10 @@ const MoviesPage = ({ message, filter=""}) => {
                 <InfiniteScroll
                     children={
                         movies.results.map((movie) => (
-                            <Movie key={movie.id} {...movie} setMovies={setMovies}/>
+<>
+                            <Movie key={movie.id} {...movie} setMovies={setMovies} />
+                            {console.log(movie)}
+</>
                         ))
                     }
                     dataLength={movies.results.length}
