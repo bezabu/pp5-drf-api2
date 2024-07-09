@@ -16,6 +16,7 @@ import { useCurrentUser } from "./contexts/CurrentUserContext";
 import MoviesPage from "./pages/movies/MoviesPage";
 import GenrePicker from "./pages/movies/GenrePicker";
 import MoviePageMovie from "./pages/movies/MoviePageMovie";
+import ReviewEditForm from "./pages/reviews/ReviewEditForm";
 
 
 
@@ -55,6 +56,7 @@ function App() {
           <Route exact path="/reviews/create" render={() => <ReviewCreateForm />} />
           <Route exact path="/reviews/m/:movie" render={() => <ReviewCreateFormMovie />} />
           <Route exact path="/reviews/:id" render={() => <ReviewPage />} />
+          <Route exact path="/reviews/:id/edit" render={() => <ReviewEditForm />} />
 
           <Route exact path="/genres" render={() => <GenrePicker />} />
           <Route render={() => <p>Page not found!</p>} />
