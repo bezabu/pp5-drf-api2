@@ -34,9 +34,9 @@ const NavBar = () => {
     <NavLink
     className={styles.NavLink}
     activeClassName={styles.Active}
-    to="/movies/create"
+    to="/reviews/create"
     >
-      <i className="fa-solid fa-film"></i>Add Movie
+      <i className="fa-solid fa-film"></i>Add Review
       </NavLink>
   
   )
