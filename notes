@@ -39,3 +39,36 @@ class Vote(models.Model):
 
     def __str__(self):
         return f'{self.owner} {self.direction} vote on {self.comment}'
+
+
+
+
+        Genre stuff
+
+genreResults.map((gen) => (
+        <p>
+            
+            
+                
+        </p>
+    ))
+
+
+for (let key in data.results){
+                    result.push(data.results[key].id);
+                    //setGenreResults(data.results[key].id)
+                    console.log(`adding ${data.results[key].id}`)
+                    setGenreResults(
+                        ...prevGenresResults,
+                        setGenreResults(data.results[key].id)
+                    )
+
+                    
+
+                }
+setGenreResults(prevGen => {
+                        return { 
+                          ...prevGen, 
+                          prevGen.push(data.results[key].id)
+                        }
+                      })

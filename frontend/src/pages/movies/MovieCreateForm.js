@@ -18,6 +18,8 @@ import GenreOptions from "./GenreOptions";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
+import GenreChooser from "../../components/GenreChooser";
+
 
 function MovieCreateForm() {
 
@@ -33,12 +35,13 @@ function MovieCreateForm() {
   const [movieData, setMovieData] = useState({
     title: "",
     year: "",
-    genre: 1,
+    genre: "",
     director: "",
     actors: "",
     image: "",
 
   });
+  const [allchecked, setAllChecked] = React.useState([]);
   const { title, year, genre, director, actors, image } = movieData;
 
   const imageInput = useRef(null);
@@ -60,6 +63,7 @@ function MovieCreateForm() {
         image: URL.createObjectURL(event.target.files[0]),
       });
     }
+    
   };
 
 
@@ -76,6 +80,7 @@ function MovieCreateForm() {
 
     try {
       console.log('attempt movie create');
+      console.log(genre)
       console.log(title, year, genre, director, actors, image);
       const {data} = await axiosReq.post('/movies/', formData);
       console.log(data);
@@ -189,8 +194,13 @@ function MovieCreateForm() {
           {message}
         </Alert>
       ))}
-
-            
+            <Form.Group>
+            {['checkbox'].map((type) => (
+            <div key={`default-${type}`} className="mb-3">
+            <GenreChooser />
+            </div>
+          ))}
+  </Form.Group>
             {/*console.log(JSON.stringify(genreData))*/}
             {/*console.log(`keys: ${Object.keys(genreData)}`)*/}
             {/*console.log(`values ${Object.values(genreData)}`)*/}

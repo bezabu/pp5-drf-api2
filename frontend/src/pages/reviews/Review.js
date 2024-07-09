@@ -2,9 +2,10 @@ import React from 'react'
 import styles from '../../styles/Review.module.css'
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap'
-import { Link } from 'react-router-dom/cjs/react-router-dom'
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom'
 import Avatar from '../../components/Avatar'
 import { axiosRes } from '../../api/axiosDefaults';
+import { MoreDropdown } from '../../components/MoreDropdown';
 const Review = (props) => {
     const {
         id,
@@ -33,6 +34,21 @@ const Review = (props) => {
 
     const currentUser = useCurrentUser();
     //const is_owner = currentUser?.username === owner;
+    const history = useHistory();
+
+    const handleEdit = () => {
+        history.push(`/reviews/${id}/edit`);
+      };
+    
+      const handleDelete = async () => {
+        try {
+          await axiosRes.delete(`/reviews/${id}/`);
+          history.goBack();
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
 
     const handleLikeHeart = async () => {
         try {
@@ -77,14 +93,18 @@ const Review = (props) => {
             {owner}
           </Link>
 <div className="d-flex align-items-center">
-    {is_owner && reviewPage && "..."}
+    {is_owner && reviewPage && <MoreDropdown
+    handleEdit={handleEdit}
+                handleDelete={handleDelete}/>}
 </div>
             </Media>
         </Card.Body>
         <Card.Body>
             {movie_title && <Card.Title className='text-center'><Link to={`/movies/${movie}`}>{movie_title}</Link></Card.Title>}
         </Card.Body>
+        <Link to={`/reviews/${id}`}>
         <Card.Img src={movie_image} alt={movie_title} />
+        </Link>
         <Card.Text>
             {content}<br></br>
             {rating} stars
