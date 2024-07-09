@@ -8,6 +8,7 @@ import SignInForm from "./pages/auth/SignInForm";
 import { NavLink } from "react-router-dom";
 import MovieCreateForm from "./pages/movies/MovieCreateForm";
 import ReviewCreateForm from "./pages/reviews/ReviewCreateForm";
+import ReviewCreateFormMovie from "./pages/reviews/ReviewCreateFormMovie";
 import MoviePage from "./pages/movies/MoviePage";
 import ReviewPage from "./pages/reviews/ReviewPage";
 import ReviewsPage from "./pages/reviews/ReviewsPage";
@@ -52,12 +53,12 @@ function App() {
           <Route exact path="/movies/:id" render={() => <MoviePage />} />
           <Route exact path="/movies/m/:id" render={() => <MoviePageMovie />} />
           <Route exact path="/reviews/create" render={() => <ReviewCreateForm />} />
+          <Route exact path="/reviews/m/:movie" render={() => <ReviewCreateFormMovie />} />
           <Route exact path="/reviews/:id" render={() => <ReviewPage />} />
 
           <Route exact path="/genres" render={() => <GenrePicker />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
-        <p>List of <NavLink to="/movies">movies</NavLink></p>
       </Container>
     </div>
     

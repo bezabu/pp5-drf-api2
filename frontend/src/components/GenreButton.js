@@ -4,9 +4,9 @@ import { Badge } from 'react-bootstrap'
 const GenreButton = ({ id, name, color}) => {
     //console.log(name);
   return (
-    <h3>
-    <Badge style={{background: `#${color}`, color: 'black'}} >{name}</Badge>
-    </h3>
+    
+    <Badge style={{background: `#${color}`, color: 'black', 'font-size': '125%', 'margin': '5px'}} >{name}</Badge>
+    
   )
 }
 

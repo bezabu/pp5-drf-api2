@@ -112,6 +112,7 @@ const Review = (props) => {
             <i className="fa-regular fa-comment"></i>
             </Link>
             {comments_count}
+            
         </div>
     </Card>
   )

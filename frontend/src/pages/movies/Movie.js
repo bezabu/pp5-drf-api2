@@ -66,6 +66,7 @@ const Movie = (props) => {
             {reviews_count} reviews<br></br>
             {director}<br></br>
             {actors}<br></br>
+            <Link to={`/reviews/m/${id}`}>Write your own review!</Link>
         </Card.Text>
     </Card>
   )
