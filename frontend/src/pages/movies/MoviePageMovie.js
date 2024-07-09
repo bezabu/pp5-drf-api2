@@ -20,6 +20,7 @@ function MoviePageMovie(props) {
         director,
         actors,
         reviews_count,
+        reviews_avg,
         image,
         is_curator,
         moviePage,
@@ -58,8 +59,7 @@ function MoviePageMovie(props) {
         </Link>
         <Card.Text>
             {genre}
-                {/*}
-                {genre?.length ? (
+            {genre?.length ? (
                 genre.map((gen) => (
                     <>
                     <GenrePicker
@@ -75,9 +75,9 @@ function MoviePageMovie(props) {
                 <Asset src={NoResults} />
               </Container>
             )}
-              */}
-
-            {reviews_count} reviews<br></br>
+            
+            
+            Average rating: {reviews_avg} (<Link to={`/reviewsm/${id}`}> {reviews_count} reviews</Link> )
             {director}<br></br>
             {actors}<br></br>
             <Link to={`/reviews/m/${id}`}>Write your own review!</Link>

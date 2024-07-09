@@ -31,7 +31,8 @@ class ReviewList(generics.ListCreateAPIView):
     filterset_fields = [
         'owner__followed__owner__profile',
         'likes__owner__profile',
-        'owner__profile'
+        'owner__profile',
+        'movie',
     ]
     search_fields = [
         'owner__username',

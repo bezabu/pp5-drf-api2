@@ -12,6 +12,7 @@ import ReviewCreateFormMovie from "./pages/reviews/ReviewCreateFormMovie";
 import MoviePage from "./pages/movies/MoviePage";
 import ReviewPage from "./pages/reviews/ReviewPage";
 import ReviewsPage from "./pages/reviews/ReviewsPage";
+import ReviewsOfMoviePage from "./pages/reviews/ReviewsOfMoviePage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import MoviesPage from "./pages/movies/MoviesPage";
 import GenrePicker from "./pages/movies/GenrePicker";
@@ -44,6 +45,9 @@ function App() {
             <ReviewsPage message="No results found. Adjust search keywords or like a review."
             filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
             />
+            )} />
+            <Route exact path="/reviewsm/:id" render={() => (
+            <ReviewsOfMoviePage message="No results found." />
             )} />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />

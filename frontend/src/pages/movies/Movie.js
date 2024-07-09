@@ -19,6 +19,7 @@ const Movie = (props) => {
         director,
         actors,
         reviews_count,
+        reviews_avg,
         image,
         is_curator,
         moviePage,
@@ -63,7 +64,8 @@ const Movie = (props) => {
               </Container>
             )}
 
-            {reviews_count} reviews<br></br>
+            Average rating: {reviews_avg} ({reviews_count} reviews )<br></br>
+            
             {director}<br></br>
             {actors}<br></br>
             <Link to={`/reviews/m/${id}`}>Write your own review!</Link>
