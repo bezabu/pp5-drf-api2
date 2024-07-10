@@ -104,27 +104,6 @@ function ReviewCreateFormMovie() {
   }
 
 
-  /*
-  useEffect(() => {
-    getGenreData()
-  }, []);
-
-
-  const getGenreData = async (event) => {
-
-    try{
-    const { data } = await axios.get("/genres");
-        setGenreData(data.results);
-    } catch(err){
-        console.log(err);
-    }
-
-  };
-  */
-  
-  
-  
-
 
   const textFields = (
     <div className="text-center">

@@ -22,50 +22,35 @@ import { axiosReq } from "../../api/axiosDefaults";
 function ReviewCreateForm() {
 
   const [errors, setErrors] = useState({});
-
-
-
-    //const genreData = useGenreData();
-  //const setGenreData = useSetGenreData();
-
-  //const [genreData, setGenreData ] = useState(null);
-
   const [reviewData, setReviewData] = useState({
     movie: "",
     content: "",
     rating: "",
-
-
   });
   const { content, rating, movie } = reviewData;
-
-
-
+  const { movies, setMovies } = useState({ results: [] });
+  const [ hasLoaded, setHasLoaded ] = useState(false);
+  const [ movieData, setMovieData] = useState({
+    results: []
+  })
   const history = useHistory();
-
+  const [ query, setQuery ] = useState("");
   const handleChange = (event) => {
     setReviewData({
       ...reviewData,
       [event.target.name]: event.target.value,
     });
   };
-
- 
-
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-
     formData.append('content', content);
     formData.append('rating', rating);
     formData.append('movie', movie);
-
-
     try {
       console.log('attempt review create');
       console.log(content, rating, movie);
-      const {data} = await axiosReq.post('/reviews/', formData);
+      const {data} = await axiosReq.post(`/reviews`, formData);
       console.log(data);
       history.push(`/reviews/${data.id}`)
     } catch(err) {
@@ -75,38 +60,9 @@ function ReviewCreateForm() {
         setErrors(err.response?.data);
       }
     }
-
   }
-
-
-  /*
-  useEffect(() => {
-    getGenreData()
-  }, []);
-
-
-  const getGenreData = async (event) => {
-
-    try{
-    const { data } = await axios.get("/genres");
-        setGenreData(data.results);
-    } catch(err){
-        console.log(err);
-    }
-
-  };
-  */
-  
-  
-  
-
-
   const textFields = (
     <div className="text-center">
-      {/* Add your form fields here */}
-
-    
-    
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
@@ -118,6 +74,30 @@ function ReviewCreateForm() {
       </Button>
     </div>
   );
+  const fetchMovieData = async (query) => {
+    try {
+      const {data } = await axiosReq.get(`/movies/?search=${query}`);
+      setMovieData(data);
+    } catch(err){
+      console.log(err);
+    }
+   }
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        fetchMovieData(query)
+        setHasLoaded(true);
+        console.log(movieData.results)
+      } catch(err){
+        console.log(err)
+      }
+    }
+    
+
+
+     setHasLoaded(false)
+    handleMount()
+  }, [query])
 
   return (
     
@@ -128,6 +108,53 @@ function ReviewCreateForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
+            
+            {/*movies searcher*/}
+            <i className={`fas fa-search ${styles.SearchIcon}`} />
+            <Form.Group className={styles.SearchBar}
+            onSubmit={(event) => event.preventDefault()}
+            >
+            <Form.Control
+            type="text"
+            className="mr-sm-2"
+            placeholder="search movies"
+            value={query}
+            onChange={(event) => (setQuery(event.target.value),
+            fetchMovieData()
+            )}
+            />
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Control as="select" onChange={handleChange} custom >
+
+                {hasLoaded ? (
+                  <>
+                  {console.log(movieData?.results)}
+                  {movieData?.results.length ? (
+
+                    movieData.results.map((mov) => (
+                      <>
+                      
+                      <option key={movieData.results.id} {...mov} value={movieData.results.id}>{movieData.results.title}</option>
+                      
+                      </>
+                    ))
+
+                  ) : (
+                    <option disabled>No results</option>
+                  )}
+                  </>
+                ) : (
+                  <Container className={appStyles.Content}>
+                  <Asset spinner />
+                  </Container>
+                  )}
+
+              </Form.Control>
+            </Form.Group>
+
+            <p>{movie}</p>
             <Form.Group className="">
             <Form.Label className="d-none">Movie</Form.Label>
               <Form.Control
