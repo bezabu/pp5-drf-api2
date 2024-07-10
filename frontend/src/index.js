@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { CurrentUserProvider } from './contexts/CurrentUserContext';
+import { ProfileDataProvider } from './contexts/ProfileDataContext';
 //import { GenreDataProvider } from './contexts/GenreDataContext';
 
 
@@ -13,7 +14,9 @@ ReactDOM.render(
     <Router>
       <CurrentUserProvider>
         {/*<GenreDataProvider>*/}
-        <App />
+        <ProfileDataProvider>
+          <App />
+        </ProfileDataProvider>
         {/*</GenreDataProvider>*/}
       </CurrentUserProvider>
     </Router>
