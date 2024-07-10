@@ -80,7 +80,9 @@ function MoviePageMovie(props) {
             Average rating: {reviews_avg} (<Link to={`/reviewsm/${id}`}> {reviews_count} reviews</Link> )
             {director}<br></br>
             {actors}<br></br>
+            {currentUser &&
             <Link to={`/reviews/m/${id}`}>Write your own review!</Link>
+}
         </Card.Text>
     </Card>
   )
