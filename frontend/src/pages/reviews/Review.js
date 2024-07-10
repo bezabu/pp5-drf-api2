@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../../styles/Review.module.css'
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Card, Container, Media, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom'
 import Avatar from '../../components/Avatar'
 import { axiosRes } from '../../api/axiosDefaults';
@@ -83,6 +83,17 @@ const Review = (props) => {
         }
       };
 
+      const stars = []
+      const ratingStars = (rating) => {
+        for (let i = 0; i < rating; i++) {
+          stars.push(<i key={i} className="fa-solid fa-star"></i>);
+      }
+      for (let i = rating; i < 5; i++) {
+        stars.push(<i key={i} class="fa-regular fa-star"></i>);
+    }
+      return stars;
+      
+    };
 
   return (
     <Card className={styles.Review}>
@@ -107,8 +118,9 @@ const Review = (props) => {
         </Link>
         <Card.Text>
             {content}<br></br>
-            {rating} stars
-
+            <p className={styles.reviewStars}>
+            {ratingStars(rating)}
+            </p>
         </Card.Text>
         <div className={styles.ReviewBar}>
             {is_owner ? (

@@ -22,3 +22,8 @@
   .HeartOutline:hover {
     color: #f85032;
   }
+
+  .ReviewStars {
+    color: gold;
+    font-size: 120%;
+  }
