@@ -10,6 +10,9 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 import Review from "./Review";
 import Comment from "../comments/Comment";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Asset from "../../components/Asset";
+import { fetchMoreData } from "../../utils/utils";
 
 
 function ReviewPage() {
@@ -55,13 +58,21 @@ function ReviewPage() {
           "Comments"
           ) : null}
           {comments.results.length ? (
-            comments.results.map(comment => (
-              <Comment key={comment.id} {...comment} 
-              setReview={setReview}
-              setComments={setComments}
+            <InfiniteScroll
+            children={comments.results.map((comment) => (
+              <Comment
+                key={comment.id}
+                {...comment}
+                setPost={setReview}
+                setComments={setComments}
               />
-              
-            ))
+            ))}
+            dataLength={comments.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!comments.next}
+              next={() => fetchMoreData(comments, setComments)}
+            />
+
           ) : currentUser ? (
             <span>Nothing here</span>
           ) : (
