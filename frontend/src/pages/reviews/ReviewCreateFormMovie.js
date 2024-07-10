@@ -66,7 +66,6 @@ function ReviewCreateFormMovie() {
     handleMount()
   }, [movie])
 
-
  const fetchMovieData = async () => {
   try {
     const {data } = await axiosReq.get(`/movies/${movie}`)
@@ -76,17 +75,12 @@ function ReviewCreateFormMovie() {
     console.log(err)
   }
  }
-
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-
     formData.append('content', content);
     formData.append('rating', rating);
     formData.append('movie', movie);
-
-
     try {
       console.log('attempt review create');
       console.log(content, rating, movie);
