@@ -9,6 +9,7 @@ import appStyles from "../../App.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 import Review from "./Review";
+import Comment from "../comments/Comment";
 
 
 function ReviewPage() {
@@ -55,7 +56,11 @@ function ReviewPage() {
           ) : null}
           {comments.results.length ? (
             comments.results.map(comment => (
-              <p key={comment.id}>{comment.owner} - {comment.content}</p>
+              <Comment key={comment.id} {...comment} 
+              setReview={setReview}
+              setComments={setComments}
+              />
+              
             ))
           ) : currentUser ? (
             <span>Nothing here</span>
