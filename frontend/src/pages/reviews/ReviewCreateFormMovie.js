@@ -18,8 +18,10 @@ import GenreOptions from "../movies/GenreOptions";
 import { Alert, Image } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function ReviewCreateFormMovie() {
+  useRedirect("loggedOut")
   const { movie } = useParams();
   const [errors, setErrors] = useState({});
   console.log(movie)

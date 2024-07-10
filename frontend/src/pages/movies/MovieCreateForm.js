@@ -19,10 +19,11 @@ import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import GenreChooser from "../../components/GenreChooser";
+import { useRedirect } from "../../hooks/useRedirect";
 
 
 function MovieCreateForm() {
-
+  useRedirect("loggedOut")
   const [errors, setErrors] = useState({});
 
 
