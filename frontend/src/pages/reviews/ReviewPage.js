@@ -63,7 +63,7 @@ function ReviewPage() {
               <Comment
                 key={comment.id}
                 {...comment}
-                setPost={setReview}
+                setReview={setReview}
                 setComments={setComments}
               />
             ))}

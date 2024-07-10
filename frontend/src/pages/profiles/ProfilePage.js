@@ -23,23 +23,25 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Review from "../reviews/Review";
 import { fetchMoreData } from "../../utils/utils";
 
+
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const currentUser = useCurrentUser();
   const { id } = useParams();
-  const setProfileData = useSetProfileData();
+  const {setProfileData, handleFollow} = useSetProfileData();
   const { pageProfile } = useProfileData();
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
   const [profileReviews, setProfileReviews] = useState({ results: [] });
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }, { data: profileReviews }] = await Promise.all([
-          axiosReq.get(`/profiles/${id}`),
-          axiosReq.get(`/reviews/?owner__profile=${id}`),
-        ]);
+        const [{ data: pageProfile }, { data: profileReviews }] =
+          await Promise.all([
+            axiosReq.get(`/profiles/${id}`),
+            axiosReq.get(`/reviews/?owner__profile=${id}`),
+          ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
@@ -93,7 +95,7 @@ function ProfilePage() {
             ) : (
               <Button
                 className={`${btnStyles.Button} ${btnStyles.Black}`}
-                onClick={() => {}}
+                onClick={() => handleFollow(profile)}
               >
                 follow
               </Button>
@@ -104,15 +106,15 @@ function ProfilePage() {
     </>
   );
 
-  const mainProfilePosts = (
+  const mainProfileReviews = (
     <>
       <hr />
       <p className="text-center">{profile?.owner}'s reviews</p>
       <hr />
       {profileReviews.results.length ? (
         <InfiniteScroll
-        children={profileReviews.results.map((post) => (
-            <Review key={post.id} {...post} setPosts={setProfileReviews} />
+        children={profileReviews.results.map((review) => (
+            <Review key={review.id} {...review} setReviews={setProfileReviews} />
           ))}
           dataLength={profileReviews.results.length}
           loader={<Asset spinner />}
@@ -135,7 +137,7 @@ function ProfilePage() {
           {hasLoaded ? (
             <>
               {mainProfile}
-              {mainProfilePosts}
+              {mainProfileReviews}
             </>
           ) : (
             <Asset spinner />
