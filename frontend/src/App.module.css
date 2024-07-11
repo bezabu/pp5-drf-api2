@@ -9,7 +9,7 @@
   }
     
   .Main {
-    padding-top: 81px;
+    padding-top: 90px;
   }
   h1 {
     font-family: "Arvo", serif;
@@ -41,7 +41,7 @@
   .Image {
     max-height: 40vh;
     max-width: 100%;
-    object-fit: contain;
+
   }
 
   figure {

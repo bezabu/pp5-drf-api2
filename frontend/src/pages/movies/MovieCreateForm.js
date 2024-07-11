@@ -83,7 +83,7 @@ function MovieCreateForm() {
       console.log('attempt movie create');
       console.log(genre)
       console.log(title, year, genre, director, actors, image);
-      const {data} = await axiosReq.post('/movies/', formData);
+      const {data} = await axiosReq.post('/movies', formData);
       console.log(data);
       history.push(`/movies/${data.id}`)
     } catch(err) {

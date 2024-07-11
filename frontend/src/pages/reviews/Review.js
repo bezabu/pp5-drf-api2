@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../../styles/Review.module.css'
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Container, Media, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Card, Col, Container, Image, Media, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom'
 import Avatar from '../../components/Avatar'
 import { axiosRes } from '../../api/axiosDefaults';
@@ -96,33 +96,37 @@ const Review = (props) => {
     };
 
   return (
-    <Card className={styles.Review}>
-        <Card.Body>
-            <Media className="align--items-center justify-content-between">
-            <Link to={`/profiles/${profile_id}`}>
+<>
+<Row className={`${styles.ReviewContainer} d-flex align--items-center `} >
+  
+  
+    <Row className={`${styles.ReviewMedia} align--items-center justify-content-between`}>
+      <Col className={`${styles.ImageContainer}`} xs={12} sm={4}>
+      <img className={styles.MovieImage} src={movie_image} alt={movie_title}/>
+      </Col>
+      <Col className={`${styles.ReviewContainerCol}`} xs={12} sm={8} fluid>
+      <Row className={`${styles.ReviewContainerRow} justify-content-between`}>
+        <Col className={`${styles.ProfileContainer} align--items-left`} >
+        <Link to={`/profiles/${profile_id}`}>
             <Avatar src={profile_image} height={55} />
             {owner}
           </Link>
-<div className="d-flex align-items-center">
-    {is_owner && reviewPage && <MoreDropdown
-    handleEdit={handleEdit}
-                handleDelete={handleDelete}/>}
-</div>
-            </Media>
-        </Card.Body>
-        <Card.Body>
-            {movie_title && <Card.Title className='text-center'><Link to={`/movies/${movie}`}>{movie_title}</Link></Card.Title>}
-        </Card.Body>
-        <Link to={`/reviews/${id}`}>
-        <Card.Img src={movie_image} alt={movie_title} />
-        </Link>
-        <Card.Text>
-            {content}<br></br>
-            <p className={styles.reviewStars}>
+        </Col>
+        <Col className={`${styles.Title}`} fluid>
+        {movie_title && <Card.Title className='text-center'><Link to={`/movies/${movie}`}>{movie_title}</Link></Card.Title>}
+        </Col>
+      
+      </Row>
+      <Row className={styles.ContentContainer}>
+      {content}
+      </Row>
+      <Row className={`${styles.BottomRow} align--items-center justify-content-between`}>
+        <Col>
+      <p className={styles.ReviewStars}>
             {ratingStars(rating)}
             </p>
-        </Card.Text>
-        <div className={styles.ReviewBar}>
+            </Col>
+            <Col>
             {is_owner ? (
                 <OverlayTrigger placement="top" overlay={<Tooltip>You can't like your own review!</Tooltip>}>
                     <i className="fa-regular fa-heart"></i>
@@ -139,14 +143,23 @@ const Review = (props) => {
                 </OverlayTrigger>
             )}
             {likes_count}
-
+            </Col>
+            <Col>
             <Link to={`/reviews/${id}`}>
             <i className="fa-regular fa-comment"></i>
             </Link>
             {comments_count}
-            
-        </div>
-    </Card>
+            </Col>
+      </Row>
+      </Col>
+    </Row>
+  
+</Row>
+
+
+   
+
+    </>
   )
 }
 

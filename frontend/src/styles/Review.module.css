@@ -1,9 +1,12 @@
-.Review {
-    background-color: #333333;
+.ReviewContainer {
+    background-color: #242424;
     border: 1px solid #dadadf;
-    border-radius: 2px;
-    margin-bottom: 16px;
+    border-radius: 5px;
+
+    max-width: 100%;
     text-align: center;
+
+    margin: 10px 0 16px 0;
   }
   
   .Review figure,
@@ -27,3 +30,51 @@
     color: gold;
     font-size: 120%;
   }
+
+  .ImageContainer {
+
+
+  }
+
+  .ReviewContainerCol {
+    
+
+  }
+
+  .ReviewContainerRow {
+    margin: 10px 0 10px 0;
+
+  }
+
+  .ProfileContainer {
+    
+
+  }
+
+  .ContentContainer {
+    padding: 10px 0 10px 0;
+
+    
+  }
+
+.BottomRow {
+  margin: 10px 0 10px 0;
+}
+
+  .Title {
+    margin: auto;
+    
+  }
+
+  .MovieImage {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+  }
+
+  .ReviewMedia {
+    max-width: 100%;
+  }
+

@@ -72,3 +72,59 @@ setGenreResults(prevGen => {
                           prevGen.push(data.results[key].id)
                         }
                       })
+
+
+
+                      ///OLD REVIEW ITEM
+
+ <Card className={styles.Review}>
+        <Card.Body>
+            <Media className="align--items-center justify-content-between">
+            <Link to={`/profiles/${profile_id}`}>
+            <Avatar src={profile_image} height={55} />
+            {owner}
+          </Link>
+<div className="d-flex align-items-center">
+    {is_owner && reviewPage && <MoreDropdown
+    handleEdit={handleEdit}
+                handleDelete={handleDelete}/>}
+</div>
+            </Media>
+        </Card.Body>
+        <Card.Body>
+            {movie_title && <Card.Title className='text-center'><Link to={`/movies/${movie}`}>{movie_title}</Link></Card.Title>}
+        </Card.Body>
+        <Link to={`/reviews/${id}`}>
+        <Card.Img src={movie_image} alt={movie_title} />
+        </Link>
+        <Card.Text>
+            {content}<br></br>
+            <p className={styles.reviewStars}>
+            {/*ratingStars(rating)*/}
+            </p>
+        </Card.Text>
+        <div className={styles.ReviewBar}>
+            {is_owner ? (
+                <OverlayTrigger placement="top" overlay={<Tooltip>You can't like your own review!</Tooltip>}>
+                    <i className="fa-regular fa-heart"></i>
+                </OverlayTrigger>
+            ) : like_id ? (
+                <span onClick={handleUnlikeHeart}><i className={`fa-regular fa-heart ${styles.Heart}`}></i></span>
+            ) : currentUser ? (
+                <span onClick={handleLikeHeart}>
+                    <i className={`fa-regular fa-heart ${styles.HeartOutline}`}></i>
+                </span>
+            ) : (
+                <OverlayTrigger placement="top" overlay={<Tooltip>Log in to like reviews</Tooltip>}>
+                    <i className="fa-regular fa-heart"></i>
+                </OverlayTrigger>
+            )}
+            {likes_count}
+
+            <Link to={`/reviews/${id}`}>
+            <i className="fa-regular fa-comment"></i>
+            </Link>
+            {comments_count}
+            
+        </div>
+    </Card>
