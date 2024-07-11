@@ -22,7 +22,7 @@ import { useRedirect } from "../../hooks/useRedirect";
 
 
 function ReviewCreateForm() {
-  useRedirect("loggedOut");
+  //useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
   const [reviewData, setReviewData] = useState({
     movie: "",
