@@ -175,7 +175,8 @@ else:
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com",
-    "https://*.gitpod.io"
+    "https://*.gitpod.io",
+    "https://bb-pp5-movie-review-app-363d95a342e4.herokuapp.com"
 ]
 
 
