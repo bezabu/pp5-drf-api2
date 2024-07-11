@@ -11,7 +11,7 @@ export const useCurrentUser = () => useContext(CurrentUserContext)
 export const useSetCurrentUser = () => useContext(SetCurrentUserContext)
 
 
-export const CurrentUserProvider = (children) => {
+export const CurrentUserProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState(null)
 
     //second
@@ -21,7 +21,7 @@ export const CurrentUserProvider = (children) => {
   const handleMount = async () => {
     try {
       console.log('get current user')
-      const {data} = await axiosRes.get('/dj-rest-auth/user/')
+      const {data} = await axiosRes.get('/dj-rest-auth/user')
       setCurrentUser(data)
     } catch(err){
       console.log(err)
@@ -39,7 +39,7 @@ export const CurrentUserProvider = (children) => {
         async (config) => {
             try {
               console.log('attempt refresh')
-                await axios.post('/dj-rest-auth/token/refresh/')
+                await axios.post('/dj-rest-auth/token/refresh')
                 
             } catch{
                 setCurrentUser((prevCurrentUser) => {
@@ -65,7 +65,7 @@ export const CurrentUserProvider = (children) => {
             if (err.response?.status === 401){
                 try{
                   console.log('attempt refresh')
-                    await axios.post('/dj-rest-auth/token/refresh/')
+                    await axios.post('/dj-rest-auth/token/refresh')
                 } catch(err){
                     setCurrentUser(prevCurrentUser => {
                         if (prevCurrentUser){
