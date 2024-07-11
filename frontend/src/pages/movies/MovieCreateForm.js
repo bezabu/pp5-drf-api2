@@ -36,7 +36,7 @@ function MovieCreateForm() {
   const [movieData, setMovieData] = useState({
     title: "",
     year: "",
-    genre: "",
+    genre: 1,
     director: "",
     actors: "",
     image: "",
@@ -54,6 +54,7 @@ function MovieCreateForm() {
       ...movieData,
       [event.target.name]: event.target.value,
     });
+    console.log(movieData)
   };
 
   const handleChangeImage = (event) => {
@@ -81,9 +82,9 @@ function MovieCreateForm() {
 
     try {
       console.log('attempt movie create');
-      console.log(genre)
       console.log(title, year, genre, director, actors, image);
-      const {data} = await axiosReq.post('/movies', formData);
+      const {data} = await axiosReq.post('/movies/', formData);
+      console.log('data returned from attempt:')
       console.log(data);
       history.push(`/movies/${data.id}`)
     } catch(err) {
@@ -202,10 +203,6 @@ function MovieCreateForm() {
             </div>
           ))}
   </Form.Group>
-            {/*console.log(JSON.stringify(genreData))*/}
-            {/*console.log(`keys: ${Object.keys(genreData)}`)*/}
-            {/*console.log(`values ${Object.values(genreData)}`)*/}
-
 
             <Form.Group className="">
             <Form.Label className="d-none">Actors</Form.Label>

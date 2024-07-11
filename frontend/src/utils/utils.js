@@ -12,6 +12,7 @@ export const fetchMoreData = async (resource, setResource) => {
           : [...acc, cur];
       }, prevResource.results),
     }));
+    console.log(resource);
   } catch (err) {}
 };
 

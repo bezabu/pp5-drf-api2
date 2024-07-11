@@ -25,8 +25,8 @@ function MoviePage() {
         ])
         //const [{data: movie }] = await axiosReq.get(`/movies/${id}`);
         setMovie({ results: [movie] })
-        console.log('one');
-        console.log(movie)
+        //console.log('one');
+        //console.log(movie)
         //console.log(data)
       } catch(err){
         console.log(err)
