@@ -193,41 +193,41 @@ function ReviewCreateForm() {
 
             {['radio'].map((type) => (
     <div key={`inline-${type}`} className="mb-3">
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
       <Form.Check inline label='No stars' name="rating" value="0" type={type} id={`inline-${type}-1`} /><br></br>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
       <Form.Check inline label="One star" name="rating" value="1" type={type} id={`inline-${type}-2`} /><br></br>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
       <Form.Check inline label="Two stars" name="rating" value="2" type={type} id={`inline-${type}-3`} /><br></br>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
       <Form.Check inline label="Three stars" name="rating" value="3" type={type} id={`inline-${type}-4`} /><br></br>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-regular fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-regular fa-star"></i>
       <Form.Check inline label="Four stars" name="rating" value="4" type={type} id={`inline-${type}-5`} /><br></br>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
       <Form.Check inline label="Five stars" name="rating" value="5" type={type} id={`inline-${type}-6`} />
     </div>
   ))}

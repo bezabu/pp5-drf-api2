@@ -89,7 +89,7 @@ const Review = (props) => {
           stars.push(<i key={i} className="fa-solid fa-star"></i>);
       }
       for (let i = rating; i < 5; i++) {
-        stars.push(<i key={i} class="fa-regular fa-star"></i>);
+        stars.push(<i key={i} className="fa-regular fa-star"></i>);
     }
       return stars;
       
