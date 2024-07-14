@@ -115,6 +115,14 @@ const Review = (props) => {
         <Col className={`${styles.Title}`} fluid>
         {movie_title && <Card.Title className='text-center'><Link to={`/movies/${movie}`}>{movie_title}</Link></Card.Title>}
         </Col>
+        <Col className={`${styles.DropDownContainer} align--items-right`}>
+        {is_owner && reviewPage && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
+        </Col>
       
       </Row>
       <Row className={styles.ContentContainer}>

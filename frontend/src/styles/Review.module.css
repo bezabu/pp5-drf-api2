@@ -57,6 +57,11 @@
     
   }
 
+.DropDownContainer {
+  text-align: right;
+  margin-right: 0;
+}
+
 .BottomRow {
   margin: 10px 0 10px 0;
 }
