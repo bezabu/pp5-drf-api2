@@ -79,9 +79,9 @@
 
 Editing a review changes review image
 When creating a review the rating will be 3 stars regardless of the form input
-Infinite scroll does not load on Gitpod
 
-EVERYTHING
+
+All functionality that required the user to be logged in would result in a 403 status code with no CSRF token in the request. This mysteriously stopped the day before submission. I did NOTHING.
 
 ## Deployment
 
