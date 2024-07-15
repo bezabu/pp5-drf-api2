@@ -12,6 +12,7 @@ import axios from 'axios'
 
 //import { Dropdown, DropdownButton, NavDropdown } from 'react-bootstrap'
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle'
+import { removeTokenTimestamp } from '../utils/utils'
 
 
 
@@ -26,6 +27,7 @@ const NavBar = () => {
     try {
       await axios.post('dj-rest-auth/logout/');
       setCurrentUser(null);
+      removeTokenTimestamp();
     } catch(err) {
       console.log(err);
     }

@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 
 
 
@@ -40,6 +41,9 @@ export const CurrentUserProvider = ({children}) => {
   useMemo(() => {
     axiosReq.interceptors.request.use(
         async (config) => {
+          if (shouldRefreshToken()){
+
+          
             try {
 
                 await axios.post('/dj-rest-auth/token/refresh/')
@@ -50,8 +54,10 @@ export const CurrentUserProvider = ({children}) => {
                         history.push('/signin')
                     }
                     return null
-                })
+                });
+                removeTokenTimestamp();
                 return config
+              }
             }
             return config
         },
@@ -75,7 +81,8 @@ export const CurrentUserProvider = ({children}) => {
                             history.push('/signin')
                         }
                         return null
-                    })
+                    });
+                    removeTokenTimestamp();
                 }
                 return axios(err.config)
             }
