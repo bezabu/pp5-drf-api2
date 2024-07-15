@@ -26,6 +26,13 @@
 
 ### Existing Features
 
+- API
+
+  - API endpoints
+
+
+- Frontend
+
 ### Features to implement
 
 ## User Experience Design
@@ -90,5 +97,6 @@ The following steps were taken to deploy this project to Heroku:
 Site logo adapted from [this image](https://freerangestock.com/photos/119591/cinema-vector-icon.html) from free range stock
 No results icon from [very icon](https://www.veryicon.com/icons/commerce-shopping/jkd_wap/no-result.html)
 Default user icon from [vectorstock](https://www.vectorstock.com/royalty-free-vector/black-user-icon-vector-42797437)
+File upload icon from [fontawesome via wikipedia](https://commons.wikimedia.org/wiki/File:Font_Awesome_5_solid_file-upload.svg)
 
 ### Code
