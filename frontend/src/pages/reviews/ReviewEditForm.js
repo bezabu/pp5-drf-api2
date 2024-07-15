@@ -49,7 +49,7 @@ function ReviewEditForm() {
             const {data} = await axiosReq.get(`/reviews/${id}`)
             const {content, rating, is_owner} = data;
             console.log(data)
-            is_owner ? setReviewData({content, rating}) : history.push('/')
+            is_owner ? setReviewData({movie, content, rating}) : history.push('/')
         } catch(err) {
             console.log(err)
         }
@@ -82,14 +82,17 @@ function ReviewEditForm() {
     event.preventDefault();
     const formData = new FormData();
 
+    console.log(movie);
+    formData.append('movie', movie);
     formData.append('content', content);
     formData.append('rating', rating);
-    formData.append('movie', id);
+    console.log(formData);
 
 
     try {
       console.log('attempt review create');
-      console.log(content, rating, movie);
+      //console.log(content, rating, movie);
+      console.log(formData);
       await axiosReq.put(`/reviews/${id}`, formData);
       
       history.push(`/reviews/${id}`)
@@ -131,7 +134,7 @@ function ReviewEditForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
-            
+
             <Form.Group className="">
             <Form.Label className="d-none">Content</Form.Label>
               <Form.Control
@@ -157,37 +160,37 @@ function ReviewEditForm() {
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label='No stars' name="rating" value="0" type={type} id={`inline-${type}-1`} defaultChecked={rating === 0 ? true : console.log(rating)} onChange={handleChange}/><br></br>
+      <Form.Check inline label='No stars' name="rating" value="0" type={type} id={`inline-${type}-1`} defaultChecked={rating === 0 ? true : console.log('0')} onChange={handleRadio}/><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label="One star" name="rating" value="1" type={type} id={`inline-${type}-2`} defaultChecked={rating === 1 ? true : console.log(rating)} onChange={handleChange}/><br></br>
+      <Form.Check inline label="One star" name="rating" value="1" type={type} id={`inline-${type}-2`} defaultChecked={rating === 1 ? true : console.log('1')} onChange={handleRadio}/><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label="Two stars" name="rating" value="2" type={type} id={`inline-${type}-3`} defaultChecked={rating === 2 ? true : console.log(rating)} onChange={handleChange}/><br></br>
+      <Form.Check inline label="Two stars" name="rating" value="2" type={type} id={`inline-${type}-3`} defaultChecked={rating === 2 ? true : console.log('2')} onChange={handleRadio}/><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label="Three stars" name="rating" value="3" type={type} id={`inline-${type}-4`} defaultChecked={rating === 3 ? true : console.log(rating)} onChange={handleChange}/><br></br>
+      <Form.Check inline label="Three stars" name="rating" value="3" type={type} id={`inline-${type}-4`} defaultChecked={rating === 3 ? true : console.log('3')} onChange={handleRadio}/><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label="Four stars" name="rating" value="4" type={type} id={`inline-${type}-5`} defaultChecked={rating === 4 ? true : console.log(rating)} onChange={handleChange}/><br></br>
+      <Form.Check inline label="Four stars" name="rating" value="4" type={type} id={`inline-${type}-5`} defaultChecked={rating === 4 ? true : console.log('4')} onChange={handleRadio}/><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
-      <Form.Check inline label="Five stars" name="rating" value="5" type={type} id={`inline-${type}-6`} defaultChecked={rating === 5 ? true : console.log(rating)} onChange={handleChange}/>
+      <Form.Check inline label="Five stars" name="rating" value="5" type={type} id={`inline-${type}-6`} defaultChecked={rating === 5 ? true : console.log('5')} onChange={handleRadio}/>
     </div>
   ))}
        {errors?.rating?.map((message, idx) => (

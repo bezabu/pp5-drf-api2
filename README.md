@@ -77,7 +77,9 @@
 
 ### Unfixed Bugs
 
-Editing a review changes review image
+When adding a movie the genre will be 1 regardless of input
+
+Unable to edit reviews, returns a 400 status
 When creating a review the rating will be 3 stars regardless of the form input
 
 

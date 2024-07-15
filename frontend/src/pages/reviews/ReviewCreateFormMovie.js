@@ -80,9 +80,10 @@ function ReviewCreateFormMovie() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
+    formData.append('movie', movie);
     formData.append('content', content);
     formData.append('rating', rating);
-    formData.append('movie', movie);
+    console.log(formData);
     try {
       console.log('attempt review create');
       console.log(content, rating, movie);
@@ -150,46 +151,46 @@ function ReviewCreateFormMovie() {
       ))}
 
 
-            {['radio'].map((type) => (
-    <div key={`inline-${type}`} className="mb-3">
+            { 
+    <div key={`inline-radio`} className="mb-3">
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label='No stars' name="rating" value="0" type={type} id={`inline-${type}-1`} /><br></br>
+      <Form.Check inline label='No stars' name="rating" value="0" type={'radio'} id={`inline-radio-1`} onChange={handleChange} /><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label="One star" name="rating" value="1" type={type} id={`inline-${type}-2`} /><br></br>
+      <Form.Check inline label="One star" name="rating" value="1" type={'radio'} id={`inline-radio-2`} onChange={handleChange} /><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label="Two stars" name="rating" value="2" type={type} id={`inline-${type}-3`} /><br></br>
+      <Form.Check inline label="Two stars" name="rating" value="2" type={'radio'} id={`inline-radio-3`} onChange={handleChange} /><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label="Three stars" name="rating" value="3" type={type} id={`inline-${type}-4`} /><br></br>
+      <Form.Check inline label="Three stars" name="rating" value="3" type={'radio'} id={`inline-radio-4`} onChange={handleChange} /><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label="Four stars" name="rating" value="4" type={type} id={`inline-${type}-5`} /><br></br>
+      <Form.Check inline label="Four stars" name="rating" value="4" type={'radio'} id={`inline-radio}-5`} onChange={handleChange} /><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
-      <Form.Check inline label="Five stars" name="rating" value="5" type={type} id={`inline-${type}-6`} />
+      <Form.Check inline label="Five stars" name="rating" value={5} type={'radio'} id={`inline-${'radio'}-6`} onChange={handleChange} />
     </div>
-  ))}
+  }
        {errors?.rating?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
