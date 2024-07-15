@@ -37,7 +37,18 @@ const NavBar = () => {
     activeClassName={styles.Active}
     to="/reviews/create"
     >
-      <i className="fa-solid fa-film"></i>Add Review
+      <i className="fa-solid fa-message"></i>Add Review
+      </NavLink>
+  
+  )
+
+  const addMovieIcon = (
+    <NavLink
+    className={styles.NavLink}
+    activeClassName={styles.Active}
+    to="/movies/create"
+    >
+      <i className="fa-solid fa-film"></i>Add Movie
       </NavLink>
   
   )
@@ -105,6 +116,7 @@ const NavBar = () => {
   <Navbar.Brand><Container><img src={film_logo} alt="film logo" height="50"/><h1>Movie Reviews</h1></Container></Navbar.Brand>
   </NavLink>
   {currentUser && addPostIcon}
+  {currentUser && addMovieIcon}
   <Navbar.Toggle ref={ref} onClick={() => setExpanded(!expanded)} aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="ml-auto text-left">
