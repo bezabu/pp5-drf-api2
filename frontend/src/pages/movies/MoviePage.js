@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+//import Container from "react-bootstrap/Container";
 
-import appStyles from "../../App.module.css";
+//import appStyles from "../../App.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
-import Movie from "./Movie";
+//import Movie from "./Movie";
 import MoviePageMovie from "./MoviePageMovie"
 import PopularProfiles from "../profiles/PopularProfiles";
 

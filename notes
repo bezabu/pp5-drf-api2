@@ -128,3 +128,30 @@ setGenreResults(prevGen => {
             
         </div>
     </Card>
+
+
+
+
+    navbar add icons:
+
+      const addReviewIcon = (
+    <NavLink
+    className={styles.NavLink}
+    activeClassName={styles.Active}
+    to="/reviews/create"
+    >
+      <i className="fa-solid fa-message"></i>Add Review
+      </NavLink>
+  
+  )
+
+  const addMovieIcon = (
+    <NavLink
+    className={styles.NavLink}
+    activeClassName={styles.Active}
+    to="/movies/create"
+    >
+      <i className="fa-solid fa-film"></i>Add Movie
+      </NavLink>
+  
+  )

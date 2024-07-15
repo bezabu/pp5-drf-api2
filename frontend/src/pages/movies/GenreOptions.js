@@ -1,14 +1,14 @@
 
 
-import { Form } from "react-bootstrap";
-import { useGenreData, useSetGenreData } from "../../contexts/GenreDataContext";
+//import { Form } from "react-bootstrap";
+import { useGenreData } from "../../contexts/GenreDataContext";
 
 
 import React from 'react'
 
 const GenreOptions = () => {
     const genreData = useGenreData();
-  const setGenreData = useSetGenreData();
+  //const setGenreData = useSetGenreData();
 
 
 

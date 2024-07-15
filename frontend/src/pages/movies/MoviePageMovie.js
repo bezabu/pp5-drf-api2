@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from '../../styles/Movie.module.css'
 import { Card, Container, Media } from 'react-bootstrap'
 import GenrePicker from './GenrePicker'
 import NoResults from "../../assets/no_results_inverted.png"
 import appStyles from "../../App.module.css";
 import Asset from '../../components/Asset'
-import GenreButton from '../../components/GenreButton'
+//import GenreButton from '../../components/GenreButton'
 import { Link, useParams } from 'react-router-dom/cjs/react-router-dom'
 import { useCurrentUser } from '../../contexts/CurrentUserContext'
-import { axiosReq } from '../../api/axiosDefaults'
+//import { axiosReq } from '../../api/axiosDefaults'
 
 
 function MoviePageMovie(props) {
@@ -24,22 +24,13 @@ function MoviePageMovie(props) {
         image,
         is_curator,
         moviePage,
-        setMovies,
+        //setMovies,
     } = props
 
 
     const currentUser = useCurrentUser();
     
-    const [genres, setGenres ] = useState({ results: [] });
-
-    const fetchMovieGenres = async () => {
-    const { data } = await Promise.all([
-        axiosReq.get(`/movies/${id}`)
-      ])
-
-}
-    
-
+    //const [genres, setGenres ] = useState({ results: [] });
 
   return (
     <Card className={styles.Movie}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -6,23 +6,23 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
-import Upload from "../../assets/upload.png";
+//import Upload from "../../assets/upload.png";
 
 import styles from "../../styles/MovieCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
-import axios from "axios";
+//import axios from "axios";
 //import { useGenreData, useSetGenreData } from "../../contexts/GenreDataContext";
-import GenreOptions from "../movies/GenreOptions";
-import { Alert, Image } from "react-bootstrap";
+//import GenreOptions from "../movies/GenreOptions";
+import Alert from "react-bootstrap/Alert";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
 
 function ReviewCreateForm() {
-  //useRedirect("loggedOut");
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
   const [reviewData, setReviewData] = useState({
     movie: "",
@@ -30,7 +30,7 @@ function ReviewCreateForm() {
     rating: "",
   });
   const { content, rating, movie } = reviewData;
-  const { movies, setMovies } = useState({ results: [] });
+  //const { movies, setMovies } = useState({ results: [] });
   const [ hasLoaded, setHasLoaded ] = useState(false);
   const [ movieData, setMovieData] = useState({
     results: []
@@ -119,9 +119,10 @@ function ReviewCreateForm() {
             className="mr-sm-2"
             placeholder="search movies"
             value={query}
-            onChange={(event) => (setQuery(event.target.value),
-            fetchMovieData()
-            )}
+            onChange={(event) => {
+              setQuery(event.target.value)
+              fetchMovieData()
+            }}
             />
             </Form.Group>
             <Form.Group>

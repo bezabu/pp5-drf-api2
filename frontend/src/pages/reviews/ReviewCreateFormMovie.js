@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -6,16 +6,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
-import Upload from "../../assets/upload.png";
+//import Upload from "../../assets/upload.png";
 
 import styles from "../../styles/MovieCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
-import axios from "axios";
+//import Asset from "../../components/Asset";
+//import axios from "axios";
 //import { useGenreData, useSetGenreData } from "../../contexts/GenreDataContext";
-import GenreOptions from "../movies/GenreOptions";
-import { Alert, Image } from "react-bootstrap";
+//import GenreOptions from "../movies/GenreOptions";
+import Alert from "react-bootstrap/Alert";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
@@ -61,22 +61,27 @@ function ReviewCreateFormMovie() {
     });
   };
 
+  
+
   useEffect(() => {
+
+    const fetchMovieData = async () => {
+      try {
+        const {data } = await axiosReq.get(`/movies/${movie}`)
+        setMovieData(data)
+    
+      } catch(err){
+        console.log(err)
+      }
+     }
+
     const handleMount = async () => {
       fetchMovieData();
     }
     handleMount()
-  }, [movie])
+  }, [movie, movieData])
 
- const fetchMovieData = async () => {
-  try {
-    const {data } = await axiosReq.get(`/movies/${movie}`)
-    setMovieData(data)
-
-  } catch(err){
-    console.log(err)
-  }
- }
+ 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -133,7 +138,7 @@ function ReviewCreateFormMovie() {
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
             {movieData.title} - {movieData.year}
-            <img src={movieData.image}/>
+            <img src={movieData.image} alt={movieData.title}/>
             <Form.Group className="">
             <Form.Label className="d-none">Content</Form.Label>
               <Form.Control

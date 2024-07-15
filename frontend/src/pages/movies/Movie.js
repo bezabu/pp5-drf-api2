@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from '../../styles/Movie.module.css'
-import { Card, Col, Container, Media, Row } from 'react-bootstrap'
-import GenrePicker from './GenrePicker'
-import NoResults from "../../assets/no_results_inverted.png"
-import appStyles from "../../App.module.css";
-import Asset from '../../components/Asset'
-import GenreButton from '../../components/GenreButton'
+import { Card, Col, Row } from 'react-bootstrap'
+//import GenrePicker from './GenrePicker'
+//import NoResults from "../../assets/no_results_inverted.png"
+//import appStyles from "../../App.module.css";
+//import Asset from '../../components/Asset'
+//import GenreButton from '../../components/GenreButton'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import { useCurrentUser } from '../../contexts/CurrentUserContext'
 
@@ -15,15 +15,15 @@ const Movie = (props) => {
         id,
         title,
         year,
-        genre,
+        //genre,
         director,
         actors,
         reviews_count,
         reviews_avg,
         image,
-        is_curator,
-        moviePage,
-        setMovies,
+        //is_curator,
+        //moviePage,
+        //setMovies,
     } = props
 
 

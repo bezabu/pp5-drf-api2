@@ -2,10 +2,12 @@ import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import Container from "react-bootstrap/Container";
 import { Route, Switch } from "react-router-dom";
+//import Route from "react-router-dom/Route"
+//import Switch from "react-router-dom/Switch";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
-import { NavLink } from "react-router-dom";
+//import { NavLink } from "react-router-dom";
 import MovieCreateForm from "./pages/movies/MovieCreateForm";
 import ReviewCreateForm from "./pages/reviews/ReviewCreateForm";
 import ReviewCreateFormMovie from "./pages/reviews/ReviewCreateFormMovie";

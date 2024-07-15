@@ -6,7 +6,7 @@ import Avatar from '../../components/Avatar'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import { useCurrentUser } from '../../contexts/CurrentUserContext'
 import { MoreDropdown } from '../../components/MoreDropdown'
-import { axiosReq, axiosRes } from '../../api/axiosDefaults'
+import { axiosRes } from '../../api/axiosDefaults'
 
 const Comment = (props) => {
     const {
@@ -16,8 +16,8 @@ const Comment = (props) => {
         profile_image,
         updated_at,
         content,
-        upvotes,
-        downvotes,
+        //upvotes,
+        //downvotes,
         setReview,
         setComments,
     } = props

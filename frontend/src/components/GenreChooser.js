@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
-import { Col, Container, Form, Row } from 'react-bootstrap';
-import GenreButtonCheck from '../components/GenreButtonCheck';
-import Asset from "../components/Asset";
-import NoResults from "../assets/no_results_inverted.png"
+import { Col, Row } from 'react-bootstrap';
+//import GenreButtonCheck from '../components/GenreButtonCheck';
+//import Asset from "../components/Asset";
+//import NoResults from "../assets/no_results_inverted.png"
 
 
 

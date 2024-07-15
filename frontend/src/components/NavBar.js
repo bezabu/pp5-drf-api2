@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
@@ -10,7 +10,7 @@ import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContex
 import Avatar from './Avatar'
 import axios from 'axios'
 
-import { Dropdown, DropdownButton, NavDropdown } from 'react-bootstrap'
+//import { Dropdown, DropdownButton, NavDropdown } from 'react-bootstrap'
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle'
 
 
@@ -31,27 +31,7 @@ const NavBar = () => {
     }
   }
 
-  const addReviewIcon = (
-    <NavLink
-    className={styles.NavLink}
-    activeClassName={styles.Active}
-    to="/reviews/create"
-    >
-      <i className="fa-solid fa-message"></i>Add Review
-      </NavLink>
-  
-  )
 
-  const addMovieIcon = (
-    <NavLink
-    className={styles.NavLink}
-    activeClassName={styles.Active}
-    to="/movies/create"
-    >
-      <i className="fa-solid fa-film"></i>Add Movie
-      </NavLink>
-  
-  )
 
   const loggedOutIcons = <>
   <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/signin"><i className="fa-solid fa-right-to-bracket"></i>Sign in</NavLink>

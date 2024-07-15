@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import axios from "axios";
+import { createContext, useContext, useEffect, useState } from "react";
+//import axios from "axios";
 import { axiosRes } from "../api/axiosDefaults";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+//import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 export const GenreDataContext = createContext();
 export const SetGenreDataContext = createContext();
@@ -15,15 +15,14 @@ export const GenreDataProvider = ({children}) => {
     const [genreData, setGenreData] = useState(null)
 
     //second
-    const history = useHistory()
+    //const history = useHistory()
 
 //second changed axios to axiosRes
   const handleMount = async () => {
     try {
       const {data} = await axiosRes.get('/genres')
       setGenreData(data.results)
-      for ( const [key, value] of Object.entries(genreData)) {
-      }
+      //for ( const [key, value] of Object.entries(genreData)) {}
     } catch(err){
       console.log(err)
     }

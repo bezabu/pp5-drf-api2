@@ -1,6 +1,6 @@
 import React from 'react'
 import { Badge, Form } from 'react-bootstrap'
-import handleChange from "../pages/movies/MovieCreateForm"
+//import handleChange from "../pages/movies/MovieCreateForm"
 
 const GenreButton = ({ id, name, color}, handleGenre, movieData, setMovieData) => {
 
@@ -9,17 +9,7 @@ const GenreButton = ({ id, name, color}, handleGenre, movieData, setMovieData) =
     </>
 
 
-const handleGenree = (event) => {
-  if (movieData.genre.includes(event.target.value)){
-    //already checked
-  } else {
-    //not already checked
-    var genre = genre.push(event.target.value)
 
-  }
-    
-  
-}
   return (
           <>
             

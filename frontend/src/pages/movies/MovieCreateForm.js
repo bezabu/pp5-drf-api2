@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -12,13 +12,13 @@ import styles from "../../styles/MovieCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
-import axios from "axios";
+//import axios from "axios";
 //import { useGenreData, useSetGenreData } from "../../contexts/GenreDataContext";
-import GenreOptions from "./GenreOptions";
+//import GenreOptions from "./GenreOptions";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
-import GenreChooser from "../../components/GenreChooser";
+//import GenreChooser from "../../components/GenreChooser";
 import { useRedirect } from "../../hooks/useRedirect";
 import MovieGenrePicker from "../../components/MovieGenrePicker";
 
@@ -43,7 +43,7 @@ function MovieCreateForm() {
     image: "",
 
   });
-  const [allchecked, setAllChecked] = React.useState([]);
+  //const [allchecked, setAllChecked] = React.useState([]);
   const { title, year, genre, director, actors, image } = movieData;
 
   const imageInput = useRef(null);
@@ -69,9 +69,7 @@ function MovieCreateForm() {
     
   };
 
-  const handleGenre = (event) => {
-  
-  }
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();

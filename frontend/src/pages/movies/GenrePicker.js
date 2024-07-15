@@ -4,12 +4,10 @@ import { Col, Container, Row } from 'react-bootstrap';
 import GenreButton from '../../components/GenreButton';
 import Asset from "../../components/Asset";
 import NoResults from "../../assets/no_results_inverted.png"
-import styles from "../../styles/ReviewsPage.module.css";
 
-import appStyles from "../../App.module.css";
 import { useLocation } from 'react-router-dom/cjs/react-router-dom';
 
-function GenrePicker({ genreKey, setGenreKey, message, filter = ""}) {
+function GenrePicker({ filter = ""}) {
     const [genres, setGenres ] = useState({ results: [] });
     const [ hasLoaded, setHasLoaded ] = useState(false);
     const { pathname } = useLocation();

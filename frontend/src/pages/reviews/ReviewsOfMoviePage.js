@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 
 import appStyles from "../../App.module.css";
 import styles from "../../styles/ReviewsPage.module.css";
-import { useLocation, useParams } from "react-router-dom/cjs/react-router-dom";
+import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import Review from "./Review";
 import NoResults from "../../assets/no_results_inverted.png"
@@ -16,14 +16,14 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 
 function ReviewsPage({ message }) {
-  const  movieId  = useParams()
+  
   const [ reviews, setReviews ] = useState({ results: [] });
   const [ hasLoaded, setHasLoaded ] = useState(false);
   const { pathname } = useLocation();
 
   const [ query, setQuery ] = useState("");
     
-  useEffect(() => {
+  useEffect((movieId) => {
     const fetchReviews = async () => {
         try {
             const {data} = await axiosReq.get(`/reviews/?movie=${movieId.id}`);
@@ -41,7 +41,7 @@ function ReviewsPage({ message }) {
     return () => {
         clearTimeout(timer)
     }
-  }, [ query, pathname]);
+  }, [query, pathname]);
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>

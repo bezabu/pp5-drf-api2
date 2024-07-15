@@ -1,8 +1,12 @@
 import React from 'react'
 import styles from '../../styles/Review.module.css'
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Col, Container, Image, Media, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
-import { Link, useHistory, useLocation, useParams } from 'react-router-dom/cjs/react-router-dom'
+import Card from 'react-bootstrap/Card'
+import Col from 'react-bootstrap/Col'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Row from 'react-bootstrap/Row';
+import Tooltip from 'react-bootstrap/Tooltip';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom'
 import Avatar from '../../components/Avatar'
 import { axiosRes } from '../../api/axiosDefaults';
 import { MoreDropdown } from '../../components/MoreDropdown';
@@ -13,8 +17,8 @@ const Review = (props) => {
         movie,
         movie_title,
         movie_image,
-        created_at,
-        updated_at,
+        //created_at,
+        //updated_at,
         content,
         rating,
         is_owner,
@@ -23,11 +27,11 @@ const Review = (props) => {
         like_id,
         likes_count,
         comments_count,
-        likes_heart_count,
-        likes_smile_count,
-        likes_thumb_count,
-        likes_laugh_count,
-        likes_applaud_count,
+        //likes_heart_count,
+        //likes_smile_count,
+        //likes_thumb_count,
+        //likes_laugh_count,
+        //likes_applaud_count,
         reviewPage,
         setReviews,
     } = props
@@ -42,7 +46,7 @@ const Review = (props) => {
     
       const handleDelete = async () => {
         try {
-          await axiosRes.delete(`/reviews/${id}/`);
+          await axiosRes.delete(`/reviews/${id}`);
           history.goBack();
         } catch (err) {
           console.log(err);

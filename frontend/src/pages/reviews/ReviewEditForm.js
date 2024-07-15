@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -6,16 +6,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
-import Upload from "../../assets/upload.png";
+//import Upload from "../../assets/upload.png";
 
 import styles from "../../styles/MovieCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
-import axios from "axios";
+//import Asset from "../../components/Asset";
+//import axios from "axios";
 //import { useGenreData, useSetGenreData } from "../../contexts/GenreDataContext";
-import GenreOptions from "../movies/GenreOptions";
-import { Alert, Image } from "react-bootstrap";
+//import GenreOptions from "../movies/GenreOptions";
+import { Alert } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -40,7 +40,7 @@ function ReviewEditForm() {
     const handleMount = async () => {
         try {
             const {data} = await axiosReq.get(`/reviews/${id}`)
-            const {content, rating, is_owner} = data;
+            const {movie, content, rating, is_owner} = data;
             
             is_owner ? setReviewData({movie, content, rating}) : history.push('/')
 
@@ -59,17 +59,6 @@ function ReviewEditForm() {
       [event.target.name]: event.target.value,
     });
   };
-
-  const handleRadio = (event) => {
-    setReviewData({
-        ...reviewData,
-        rating: event.target.value,
-      });
-
-  }
-
-
-  
 
 
   const handleSubmit = async (event) => {
@@ -150,7 +139,7 @@ function ReviewEditForm() {
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label='No stars' name="rating" value="0" type={type} id={`inline-${type}-1`} defaultChecked={rating === 0 ? true : console.log('0')} onChange={handleChange}/><br></br>
+      <Form.Check inline label='No stars' name="rating" value="0" type={type} id={`inline-${type}-1`} defaultChecked={rating === 0 ? true : null} onChange={handleChange}/><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
