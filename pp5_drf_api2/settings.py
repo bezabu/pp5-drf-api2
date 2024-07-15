@@ -218,7 +218,7 @@ USE_TZ = True
 
 STATIC_ROOT = str(BASE_DIR / 'staticfiles')
 #STATIC_URL = str(BASE_DIR / 'static/')
-STATIC_URL = '/static'
+STATIC_URL = '/static/'
 WHITENOISE_ROOT = BASE_DIR / 'staticfiles' / 'build'
 
 # Default primary key field type
