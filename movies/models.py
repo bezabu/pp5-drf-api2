@@ -12,7 +12,7 @@ class Movie(models.Model):
     )
     actors = models.CharField(max_length=255, blank=True)
     image = models.ImageField(
-        upload_to='images/', default='../clapper_board_vector_oi5zxv'
+        upload_to='images/', default='../clapper_board_vector_oi5zxv', blank=True
     )
 
     class Meta:

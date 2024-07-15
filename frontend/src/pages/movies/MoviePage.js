@@ -47,7 +47,7 @@ function MoviePage() {
 
 
         
-          <MoviePageMovie {...movie.results[0]} genre={movie.genre} setMovies={setMovie} moviePage />
+          <MoviePageMovie {...movie.results[0]} setMovies={setMovie} moviePage />
         
         
       </Col>
