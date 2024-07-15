@@ -31,7 +31,7 @@ const NavBar = () => {
     }
   }
 
-  const addPostIcon = (
+  const addReviewIcon = (
     <NavLink
     className={styles.NavLink}
     activeClassName={styles.Active}
@@ -115,7 +115,6 @@ const NavBar = () => {
 <NavLink to="/">
   <Navbar.Brand><Container><img src={film_logo} alt="film logo" height="50"/><h1>Movie Reviews</h1></Container></Navbar.Brand>
   </NavLink>
-  {currentUser && addPostIcon}
   {currentUser && addMovieIcon}
   <Navbar.Toggle ref={ref} onClick={() => setExpanded(!expanded)} aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
