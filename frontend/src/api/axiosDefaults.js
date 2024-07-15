@@ -4,6 +4,9 @@ import axios from "axios";
 //axios.defaults.baseURL = 'https://bb-pp5-api-c8624a6ee9af.herokuapp.com/';
 axios.defaults.baseURL = "/api";
 
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
+
 axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
 axios.defaults.withCredentials = true;
 
