@@ -49,6 +49,11 @@ function App() {
             filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
             />
             )} />
+            <Route exact path="/popular" render={() => (
+            <ReviewsPage message="No results found. Adjust search keywords or like a review."
+            filter={`&ordering=-likes_count&`}
+            />
+            )} />
             <Route exact path="/reviewsm/:id" render={() => (
             <ReviewsOfMoviePage message="No results found." />
             )} />

@@ -66,17 +66,11 @@ const NavBar = () => {
     >
       <i className="fa-solid fa-ticket"></i>Feed
       </NavLink>
+      
       <NavLink
     className={styles.NavLink}
     activeClassName={styles.Active}
-    to="/feed"
-    >
-      <i className="fa-solid fa-video"></i>New
-      </NavLink>
-      <NavLink
-    className={styles.NavLink}
-    activeClassName={styles.Active}
-    to="/new"
+    to="/popular"
     >
       <i className="fa-solid fa-star"></i>Popular
       </NavLink>
@@ -115,7 +109,7 @@ const NavBar = () => {
 <NavLink to="/">
   <Navbar.Brand><Container><img src={film_logo} alt="film logo" height="50"/><h1>Movie Reviews</h1></Container></Navbar.Brand>
   </NavLink>
-  {currentUser && addMovieIcon}
+  {/*currentUser && addMovieIcon*/}
   <Navbar.Toggle ref={ref} onClick={() => setExpanded(!expanded)} aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="ml-auto text-left">

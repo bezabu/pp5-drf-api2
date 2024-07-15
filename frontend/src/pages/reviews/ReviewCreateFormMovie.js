@@ -80,10 +80,12 @@ function ReviewCreateFormMovie() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
+
     formData.append('movie', movie);
     formData.append('content', content);
     formData.append('rating', rating);
     console.log(formData);
+    
     try {
       console.log('attempt review create');
       console.log(content, rating, movie);
@@ -158,31 +160,31 @@ function ReviewCreateFormMovie() {
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label='No stars' name="rating" value="0" type={'radio'} id={`inline-radio-1`} onChange={handleChange} /><br></br>
+      <Form.Check inline label='No stars' name="rating" value={0} type={'radio'} id={`inline-radio-1`} onChange={handleChange} /><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label="One star" name="rating" value="1" type={'radio'} id={`inline-radio-2`} onChange={handleChange} /><br></br>
+      <Form.Check inline label="One star" name="rating" value={1} type={'radio'} id={`inline-radio-2`} onChange={handleChange} /><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label="Two stars" name="rating" value="2" type={'radio'} id={`inline-radio-3`} onChange={handleChange} /><br></br>
+      <Form.Check inline label="Two stars" name="rating" value={2} type={'radio'} id={`inline-radio-3`} onChange={handleChange} /><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-regular fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label="Three stars" name="rating" value="3" type={'radio'} id={`inline-radio-4`} onChange={handleChange} /><br></br>
+      <Form.Check inline label="Three stars" name="rating" value={3} type={'radio'} id={`inline-radio-4`} onChange={handleChange} /><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-regular fa-star"></i>
-      <Form.Check inline label="Four stars" name="rating" value="4" type={'radio'} id={`inline-radio}-5`} onChange={handleChange} /><br></br>
+      <Form.Check inline label="Four stars" name="rating" value={4} type={'radio'} id={`inline-radio}-5`} onChange={handleChange} /><br></br>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>
       <i className="fa-solid fa-star"></i>

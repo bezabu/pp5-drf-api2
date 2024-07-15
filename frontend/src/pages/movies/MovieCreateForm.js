@@ -20,6 +20,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import GenreChooser from "../../components/GenreChooser";
 import { useRedirect } from "../../hooks/useRedirect";
+import MovieGenrePicker from "../../components/MovieGenrePicker";
 
 
 function MovieCreateForm() {
@@ -36,7 +37,7 @@ function MovieCreateForm() {
   const [movieData, setMovieData] = useState({
     title: "",
     year: "",
-    genre: 1,
+    genre: '', 
     director: "",
     actors: "",
     image: "",
@@ -68,6 +69,9 @@ function MovieCreateForm() {
     
   };
 
+  const handleGenre = (event) => {
+  
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -196,13 +200,25 @@ function MovieCreateForm() {
           {message}
         </Alert>
       ))}
+
+      {/*}
             <Form.Group>
             {['checkbox'].map((type) => (
             <div key={`default-${type}`} className="mb-3">
-            <GenreChooser />
+            <GenreChooser handleGenre={handleGenre} movieData={movieData} setMovieData={setMovieData} />
             </div>
           ))}
   </Form.Group>
+*/}
+
+<Form.Group controlId="exampleForm.SelectCustom">
+<Form.Label>Genre </Form.Label>
+    <MovieGenrePicker />
+</Form.Group>
+
+
+
+
 
             <Form.Group className="">
             <Form.Label className="d-none">Actors</Form.Label>
@@ -268,7 +284,9 @@ function MovieCreateForm() {
           <Container className={appStyles.Content}>{textFields}</Container>
         </Col>
       </Row>
-      {/*<GenreOptions />*/}
+      {/*
+      <GenreOptions />
+      */}
     </Form>
     
   );
