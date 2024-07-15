@@ -17,8 +17,6 @@ const Review = (props) => {
         movie,
         movie_title,
         movie_image,
-        //created_at,
-        //updated_at,
         content,
         rating,
         is_owner,
@@ -27,23 +25,15 @@ const Review = (props) => {
         like_id,
         likes_count,
         comments_count,
-        //likes_heart_count,
-        //likes_smile_count,
-        //likes_thumb_count,
-        //likes_laugh_count,
-        //likes_applaud_count,
         reviewPage,
         setReviews,
     } = props
 
     const currentUser = useCurrentUser();
-    //const is_owner = currentUser?.username === owner;
     const history = useHistory();
-
     const handleEdit = () => {
         history.push(`/reviews/${id}/edit`);
       };
-    
       const handleDelete = async () => {
         try {
           await axiosRes.delete(`/reviews/${id}`);
@@ -52,7 +42,6 @@ const Review = (props) => {
           console.log(err);
         }
       };
-
 
     const handleLikeHeart = async () => {
         try {
@@ -96,14 +85,10 @@ const Review = (props) => {
         stars.push(<i key={i} className="fa-regular fa-star"></i>);
     }
       return stars;
-      
     };
-
   return (
 <>
 <Row className={`${styles.ReviewContainer} d-flex align--items-center `} >
-  
-  
     <Row className={`${styles.ReviewMedia} align--items-center justify-content-between`}>
       <Col className={`${styles.ImageContainer}`} xs={12} sm={4} fluid="true">
       <Link to={`/movies/${movie}`}>
@@ -129,13 +114,10 @@ const Review = (props) => {
               />
             )}
         </Col>
-      
       </Row>
-
       <Row className={styles.ContentContainer}>
       {content}
       </Row>
-
       <Row className={`${styles.BottomRow} align--items-center justify-content-between mt-auto`}>
         <Col>
       <p className={styles.ReviewStars}>
@@ -169,11 +151,7 @@ const Review = (props) => {
       </Row>
       </Col>
     </Row>
-  
 </Row>
-
-
-   
 
     </>
   )

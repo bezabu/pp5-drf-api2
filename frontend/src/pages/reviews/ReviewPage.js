@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -36,10 +35,8 @@ function ReviewPage() {
         console.log(err)
       }
     }
-
     handleMount()
   }, [id]);
-
 
   return (
     <Row className="h-100">
@@ -73,7 +70,6 @@ function ReviewPage() {
               hasMore={!!comments.next}
               next={() => fetchMoreData(comments, setComments)}
             />
-
           ) : currentUser ? (
             <span>Nothing here</span>
           ) : (

@@ -1,14 +1,14 @@
 import React from 'react'
 import styles from '../../styles/Movie.module.css'
-import { Card, Container, Media } from 'react-bootstrap'
+import Card from 'react-bootstrap/Card'
+import Container from 'react-bootstrap/Container'
+import Media from 'react-bootstrap/Media'
 import GenrePicker from './GenrePicker'
 import NoResults from "../../assets/no_results_inverted.png"
 import appStyles from "../../App.module.css";
 import Asset from '../../components/Asset'
-//import GenreButton from '../../components/GenreButton'
 import { Link, useParams } from 'react-router-dom/cjs/react-router-dom'
 import { useCurrentUser } from '../../contexts/CurrentUserContext'
-//import { axiosReq } from '../../api/axiosDefaults'
 
 
 function MoviePageMovie(props) {
@@ -24,14 +24,8 @@ function MoviePageMovie(props) {
         image,
         is_curator,
         moviePage,
-        //setMovies,
     } = props
-
-
     const currentUser = useCurrentUser();
-    
-    //const [genres, setGenres ] = useState({ results: [] });
-
   return (
     <Card className={styles.Movie}>
         <Card.Body>
@@ -53,11 +47,9 @@ function MoviePageMovie(props) {
                 genre.map((gen) => (
                     <>
                     <GenrePicker
-                    //filter={gen}
                     filter={`id=${gen}&`}
                     key={gen} {...gen}
                     />
-                    
                     </>
                 ))
             ) : (
@@ -65,14 +57,12 @@ function MoviePageMovie(props) {
                 <Asset src={NoResults} />
               </Container>
             )}
-            
-            
             Average rating: {reviews_avg} (<Link to={`/reviewsm/${id}`}> {reviews_count} reviews</Link> )<br></br>
             {director}<br></br>
             {actors}<br></br>
             {currentUser &&
             <Link to={`/reviews/m/${id}`}>Write your own review!</Link>
-}
+            }
         </Card.Text>
     </Card>
   )

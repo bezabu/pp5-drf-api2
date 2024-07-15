@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-
 import Asset from "../../components/Asset";
-
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -34,7 +31,6 @@ function ProfilePage() {
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
   const [profileReviews, setProfileReviews] = useState({ results: [] });
-  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,7 +51,6 @@ function ProfilePage() {
     };
     fetchData();
   }, [id, setProfileData]);
-
   const mainProfile = (
     <>
     {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
@@ -107,7 +102,7 @@ function ProfilePage() {
       </Row>
     </>
   );
-
+  
   const mainProfileReviews = (
     <>
       <hr />

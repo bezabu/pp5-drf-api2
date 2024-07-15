@@ -4,8 +4,6 @@ import styles  from '../styles/MoreDropdown.module.css'
 import { useHistory } from "react-router";
 
 
-// The forwardRef is important!!
-// Dropdown needs access to the DOM node in order to position the Menu
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
     <i
     className="fas fa-ellipsis-v"
@@ -15,15 +13,11 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
         onClick(e);
       }}
     />
-    
   ));
-
   export const MoreDropdown = ({ handleEdit, handleDelete }) => {
     return (
         <Dropdown className="ml-auto" drop="left">
       <Dropdown.Toggle as={ThreeDots} />
-
-  
       <Dropdown.Menu
       className="text-center"
     popperConfig={{ strategy: "fixed" }}>
@@ -41,12 +35,10 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
         >
           <i className="fas fa-trash-alt" />
         </Dropdown.Item>
-        
       </Dropdown.Menu>
     </Dropdown>
     )
   }
-
   export function ProfileEditDropdown({ id }) {
     const history = useHistory();
     return (

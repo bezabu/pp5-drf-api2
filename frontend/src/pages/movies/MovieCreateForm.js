@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -7,18 +6,13 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/MovieCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
-//import axios from "axios";
-//import { useGenreData, useSetGenreData } from "../../contexts/GenreDataContext";
-//import GenreOptions from "./GenreOptions";
-import { Image } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
-//import GenreChooser from "../../components/GenreChooser";
 import { useRedirect } from "../../hooks/useRedirect";
 import MovieGenrePicker from "../../components/MovieGenrePicker";
 
@@ -26,13 +20,6 @@ import MovieGenrePicker from "../../components/MovieGenrePicker";
 function MovieCreateForm() {
   useRedirect("loggedOut")
   const [errors, setErrors] = useState({});
-
-
-
-    //const genreData = useGenreData();
-  //const setGenreData = useSetGenreData();
-
-  //const [genreData, setGenreData ] = useState(null);
 
   const [movieData, setMovieData] = useState({
     title: "",
@@ -43,21 +30,16 @@ function MovieCreateForm() {
     image: "",
 
   });
-  //const [allchecked, setAllChecked] = React.useState([]);
+
   const { title, year, genre, director, actors, image } = movieData;
-
   const imageInput = useRef(null);
-
   const history = useHistory();
-
   const handleChange = (event) => {
     setMovieData({
       ...movieData,
       [event.target.name]: event.target.value,
     });
-
   };
-
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
@@ -66,26 +48,19 @@ function MovieCreateForm() {
         image: URL.createObjectURL(event.target.files[0]),
       });
     }
-    
+
   };
-
-
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-
     formData.append('title', title);
     formData.append('year', year);
     formData.append('genre', genre);
     formData.append('director', director);
     formData.append('actors', actors);
     formData.append('image', imageInput.current.files[0]);
-
     try {
-
       const {data} = await axiosReq.post('/movies/', formData);
-
       history.push(`/movies/${data.id}`)
     } catch(err) {
       console.log(err)
@@ -94,16 +69,9 @@ function MovieCreateForm() {
         setErrors(err.response?.data);
       }
     }
-
   }
-
-
    const textFields = (
     <div className="text-center">
-      {/* Add your form fields here */}
-
-    
-    
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
@@ -117,9 +85,7 @@ function MovieCreateForm() {
   );
 
   return (
-    
-    <Form onSubmit={handleSubmit}>
-        
+    <Form onSubmit={handleSubmit}> 
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
@@ -175,25 +141,10 @@ function MovieCreateForm() {
         </Alert>
       ))}
 
-      {/*}
-            <Form.Group>
-            {['checkbox'].map((type) => (
-            <div key={`default-${type}`} className="mb-3">
-            <GenreChooser handleGenre={handleGenre} movieData={movieData} setMovieData={setMovieData} />
-            </div>
-          ))}
-  </Form.Group>
-*/}
-
 <Form.Group controlId="exampleForm.SelectCustom">
 <Form.Label>Genre </Form.Label>
     <MovieGenrePicker />
 </Form.Group>
-
-
-
-
-
             <Form.Group className="">
             <Form.Label className="d-none">Actors</Form.Label>
               <Form.Control
@@ -210,7 +161,6 @@ function MovieCreateForm() {
           {message}
         </Alert>
       ))}
-
             <Form.Group className="text-center">
               {image ? (
                 <>
@@ -237,7 +187,6 @@ function MovieCreateForm() {
                   />
                 </Form.Label>
               )}
-
               <Form.File
                 id="image-upload"
                 accept="image/*"
@@ -258,11 +207,7 @@ function MovieCreateForm() {
           <Container className={appStyles.Content}>{textFields}</Container>
         </Col>
       </Row>
-      {/*
-      <GenreOptions />
-      */}
     </Form>
-    
   );
 }
 

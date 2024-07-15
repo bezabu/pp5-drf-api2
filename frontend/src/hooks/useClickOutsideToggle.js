@@ -16,7 +16,6 @@ const useClickOutsideToggle = () => {
     }
   }, [ref]);
 
-
   return { expanded, setExpanded, ref };
 }
 

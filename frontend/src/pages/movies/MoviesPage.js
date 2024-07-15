@@ -1,8 +1,10 @@
-
 import React, { useEffect, useState } from 'react'
 import appStyles from "../../App.module.css";
 import styles from "../../styles/ReviewsPage.module.css";
-import { Col, Container, Form, Row } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 import Movie from './Movie';
 import Asset from '../../components/Asset';
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
@@ -59,30 +61,32 @@ const MoviesPage = ({ message, filter=""}) => {
         {hasLoaded ? (
             <>
             {movies.results.length ? (
-                //has length
                 <InfiniteScroll
                     children={
                         movies.results.map((movie) => (
                             <>
-                            <Movie key={movie.id} {...movie} setMovies={setMovies} className={`${styles.MoviesContainer}`} />
+                            <Movie key={movie.id} {...movie}
+                            setMovies={setMovies}
+                            className={`${styles.MoviesContainer}`} />
                             </>
                         ))
                     }
                     dataLength={movies.results.length}
-                    loader={<Asset spinner />}
+                    loader={
+                        <div key={0}>
+                            <Asset spinner />
+                        </div>
+                    }
                     hasMore={!!movies.next}
                     next={() => fetchMoreData(movies, setMovies)}
                 />
-                
             ) : (
-                //no length
                 <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />
               </Container>
             )}
             </>
         ) : (
-            //loading
             <Container className={appStyles.Content}>
             <Asset spinner />
             </Container>

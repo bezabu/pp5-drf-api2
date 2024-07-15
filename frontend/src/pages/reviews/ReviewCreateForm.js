@@ -1,20 +1,13 @@
 import React, { useEffect, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-
-//import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/MovieCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
-//import axios from "axios";
-//import { useGenreData, useSetGenreData } from "../../contexts/GenreDataContext";
-//import GenreOptions from "../movies/GenreOptions";
 import Alert from "react-bootstrap/Alert";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -30,7 +23,7 @@ function ReviewCreateForm() {
     rating: "",
   });
   const { content, rating, movie } = reviewData;
-  //const { movies, setMovies } = useState({ results: [] });
+
   const [ hasLoaded, setHasLoaded ] = useState(false);
   const [ movieData, setMovieData] = useState({
     results: []
@@ -50,9 +43,7 @@ function ReviewCreateForm() {
     formData.append('rating', rating);
     formData.append('movie', movie);
     try {
-
       const {data} = await axiosReq.post(`/reviews`, formData);
-
       history.push(`/reviews/${data.id}`)
     } catch(err) {
       console.log(err)
@@ -92,24 +83,17 @@ function ReviewCreateForm() {
         console.log(err)
       }
     }
-    
-
-
      setHasLoaded(false)
     handleMount()
   }, [query])
-
   return (
-    
     <Form onSubmit={handleSubmit}>
-        
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
             
-            {/*movies searcher*/}
             <i className={`fas fa-search ${styles.SearchIcon}`} />
             <Form.Group className={styles.SearchBar}
             onSubmit={(event) => event.preventDefault()}
@@ -147,7 +131,6 @@ function ReviewCreateForm() {
 
               </Form.Control>
             </Form.Group>
-
             <p>{movie}</p>
             <Form.Group className="">
             <Form.Label className="d-none">Movie</Form.Label>
@@ -181,7 +164,6 @@ function ReviewCreateForm() {
           {message}
         </Alert>
       ))}
-
 
             {['radio'].map((type) => (
     <div key={`inline-${type}`} className="mb-3">
@@ -237,9 +219,7 @@ function ReviewCreateForm() {
           <Container className={appStyles.Content}>{textFields}</Container>
         </Col>
       </Row>
-      {/*<GenreOptions />*/}
     </Form>
-    
   );
 }
 

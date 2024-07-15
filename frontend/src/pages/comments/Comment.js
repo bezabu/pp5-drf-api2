@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import CommentEditForm from "./CommentEditForm";
 import styles from '../../styles/Comment.module.css'
-import { Media } from 'react-bootstrap'
+import Media from 'react-bootstrap/Media'
 import Avatar from '../../components/Avatar'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import { useCurrentUser } from '../../contexts/CurrentUserContext'
@@ -16,8 +16,6 @@ const Comment = (props) => {
         profile_image,
         updated_at,
         content,
-        //upvotes,
-        //downvotes,
         setReview,
         setComments,
     } = props

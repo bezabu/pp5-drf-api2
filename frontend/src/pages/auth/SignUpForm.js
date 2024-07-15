@@ -1,11 +1,14 @@
 import React, {useState} from "react";
 import { Link, useHistory } from "react-router-dom";
-
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-
-import { Form, Button, Alert, Col, Row, Container } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 import axios from "axios";
 import { useRedirect } from "../../hooks/useRedirect";
 
@@ -55,14 +58,12 @@ const SignUpForm = () => {
     value={username}
     onChange={handleChange}
     />
-
   </Form.Group>
   {errors.username?.map((message, idx) => (
               <Alert key={idx} variant="warning">
                 {message}
               </Alert>
             ))}
-
 
   <Form.Group controlId="password1">
     <Form.Label className="d-none">password</Form.Label>

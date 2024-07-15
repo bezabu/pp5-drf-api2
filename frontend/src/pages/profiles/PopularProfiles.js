@@ -1,15 +1,12 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-//import { axiosReq } from "../../api/axiosDefaults";
 import appStyles from "../../App.module.css";
 import Asset from "../../components/Asset";
-
 import { useProfileData } from "../../contexts/ProfileDataContext";
 import Profile from "./Profile";
 
 const PopularProfiles = ({ mobile }) => {
     const { popularProfiles } = useProfileData();
-
   return (
     <Container
       className={`${appStyles.Content} ${

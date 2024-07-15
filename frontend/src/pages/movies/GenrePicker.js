@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { axiosReq } from '../../api/axiosDefaults';
-import { Col, Container, Row } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
 import GenreButton from '../../components/GenreButton';
 import Asset from "../../components/Asset";
 import NoResults from "../../assets/no_results_inverted.png"

@@ -1,11 +1,8 @@
 import React from 'react'
 import styles from '../../styles/Movie.module.css'
-import { Card, Col, Row } from 'react-bootstrap'
-//import GenrePicker from './GenrePicker'
-//import NoResults from "../../assets/no_results_inverted.png"
-//import appStyles from "../../App.module.css";
-//import Asset from '../../components/Asset'
-//import GenreButton from '../../components/GenreButton'
+import Card from 'react-bootstrap/Card'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import { useCurrentUser } from '../../contexts/CurrentUserContext'
 
@@ -15,15 +12,11 @@ const Movie = (props) => {
         id,
         title,
         year,
-        //genre,
         director,
         actors,
         reviews_count,
         reviews_avg,
         image,
-        //is_curator,
-        //moviePage,
-        //setMovies,
     } = props
 
 
@@ -31,7 +24,7 @@ const Movie = (props) => {
     const currentUser = useCurrentUser();
 
   return (
-    <>
+    
         <Col className={`${styles.MovieContainer}`} xs={12} sm={6} md={3}>
         <Row className={`${styles.InnerMovieContainer}`}>
             <Col>
@@ -45,27 +38,7 @@ const Movie = (props) => {
         <Card.Img src={image} alt={title} className={styles.MovieImage}/>
         </Link>
         </Row>
-        {/*}
-        <Row>
-        {genre?.length ? (
-                genre.map((gen) => (
-                    <>
-                    <GenrePicker
-                    
-                    //filter={gen}
-                    filter={`id=${gen}&`}
-                    key={gen} {...gen}
-                    />
-                    
-                    </>
-                ))
-            ) : (
-                <Container className={appStyles.Content}>
-                <Asset src={NoResults} />
-              </Container>
-            )}
-        </Row>
-        */}
+        
         <Row className={`${styles.MovieTextContainer}`}>
             
         Average rating: {reviews_avg} (<Link to={`/reviewsm/${id}`}> {reviews_count} reviews</Link> )<br></br>
@@ -95,7 +68,7 @@ const Movie = (props) => {
                 
 
             
-</> 
+ 
   )
 }
 

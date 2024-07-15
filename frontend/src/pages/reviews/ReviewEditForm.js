@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-
-//import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/MovieCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-//import Asset from "../../components/Asset";
-//import axios from "axios";
-//import { useGenreData, useSetGenreData } from "../../contexts/GenreDataContext";
-//import GenreOptions from "../movies/GenreOptions";
 import { Alert } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -23,7 +15,6 @@ function ReviewEditForm() {
 
   const [errors, setErrors] = useState({});
     
-
   const [reviewData, setReviewData] = useState({
     movie: "",
     content: "",
@@ -40,18 +31,14 @@ function ReviewEditForm() {
     const handleMount = async () => {
         try {
             const {data} = await axiosReq.get(`/reviews/${id}`)
-            const {movie, content, rating, is_owner} = data;
-            
+            const {movie, content, rating, is_owner} = data; 
             is_owner ? setReviewData({movie, content, rating}) : history.push('/')
-
         } catch(err) {
             console.log(err)
         }
     }
-
     handleMount();
   }, [history, id]);
-
 
   const handleChange = (event) => {
     setReviewData({
@@ -60,18 +47,12 @@ function ReviewEditForm() {
     });
   };
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-
-
     formData.append('movie', movie);
     formData.append('content', content);
     formData.append('rating', rating);
-
-
-
     try {
       await axiosReq.put(`/reviews/${id}`, formData);
       history.push(`/reviews/${id}`)
@@ -82,16 +63,10 @@ function ReviewEditForm() {
         setErrors(err.response?.data);
       }
     }
-
   }
-
 
   const textFields = (
     <div className="text-center">
-      {/* Add your form fields here */}
-
-    
-    
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
@@ -105,15 +80,12 @@ function ReviewEditForm() {
   );
 
   return (
-    
     <Form onSubmit={handleSubmit}>
-        
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
-
             <Form.Group className="">
             <Form.Label className="d-none">Content</Form.Label>
               <Form.Control
@@ -130,7 +102,6 @@ function ReviewEditForm() {
           {message}
         </Alert>
       ))}
-
 
             {['radio'].map((type) => (
     <div key={`inline-${type}`} className="mb-3">

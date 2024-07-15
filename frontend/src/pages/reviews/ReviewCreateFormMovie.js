@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-
-//import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/MovieCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-//import Asset from "../../components/Asset";
-//import axios from "axios";
-//import { useGenreData, useSetGenreData } from "../../contexts/GenreDataContext";
-//import GenreOptions from "../movies/GenreOptions";
 import Alert from "react-bootstrap/Alert";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -25,19 +17,10 @@ function ReviewCreateFormMovie() {
   const { movie } = useParams();
   const [errors, setErrors] = useState({});
 
-
-
-    //const genreData = useGenreData();
-  //const setGenreData = useSetGenreData();
-
-  //const [genreData, setGenreData ] = useState(null);
-
   const [reviewData, setReviewData] = useState({
     movie: "",
     content: "",
     rating: "",
-
-
   });
   const { content, rating, } = reviewData;
 
@@ -53,7 +36,6 @@ function ReviewCreateFormMovie() {
   })
 
   const history = useHistory();
-
   const handleChange = (event) => {
     setReviewData({
       ...reviewData,
@@ -61,40 +43,30 @@ function ReviewCreateFormMovie() {
     });
   };
 
-  
-
   useEffect(() => {
 
     const fetchMovieData = async () => {
       try {
         const {data } = await axiosReq.get(`/movies/${movie}`)
         setMovieData(data)
-    
       } catch(err){
         console.log(err)
       }
      }
-
     const handleMount = async () => {
       fetchMovieData();
     }
     handleMount()
   }, [movie, movieData])
 
- 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-
     formData.append('movie', movie);
     formData.append('content', content);
     formData.append('rating', rating);
-
-    
     try {
-
       const {data} = await axiosReq.post('/reviews/', formData);
-
       history.push(`/reviews/${data.id}`)
     } catch(err) {
       console.log(err)
@@ -103,17 +75,10 @@ function ReviewCreateFormMovie() {
         setErrors(err.response?.data);
       }
     }
-
   }
-
-
 
   const textFields = (
     <div className="text-center">
-      {/* Add your form fields here */}
-
-    
-    
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
@@ -124,14 +89,10 @@ function ReviewCreateFormMovie() {
         create
       </Button>
     </div>
-    
   );
 
-  
   return (
-    
     <Form onSubmit={handleSubmit}>
-        
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
@@ -155,7 +116,6 @@ function ReviewCreateFormMovie() {
           {message}
         </Alert>
       ))}
-
 
             { 
     <div key={`inline-radio`} className="mb-3">
@@ -202,8 +162,7 @@ function ReviewCreateFormMovie() {
           {message}
         </Alert>
       ))}     
-
-            
+   
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>
@@ -211,7 +170,6 @@ function ReviewCreateFormMovie() {
           <Container className={appStyles.Content}>{textFields}</Container>
         </Col>
       </Row>
-      {/*<GenreOptions />*/}
     </Form>
     
   );

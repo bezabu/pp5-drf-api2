@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-
 import appStyles from "../../App.module.css";
 import styles from "../../styles/ReviewsPage.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
@@ -46,7 +44,6 @@ function ReviewsPage({ message, filter="" }) {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <PopularProfiles mobile />
-
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form className={styles.SearchBar}
         onSubmit={(event) => event.preventDefault()}
@@ -59,8 +56,6 @@ function ReviewsPage({ message, filter="" }) {
         onChange={(event) => setQuery(event.target.value)}
         />
         </Form>
-
-
         {hasLoaded ? (
             <>
             {reviews.results.length ? (
@@ -75,7 +70,6 @@ function ReviewsPage({ message, filter="" }) {
                     hasMore={!!reviews.next}
                     next={() => fetchMoreData(reviews, setReviews)}
                 />
-                
             ) : (
                 <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />
@@ -87,7 +81,6 @@ function ReviewsPage({ message, filter="" }) {
             <Asset spinner />
           </Container>
         )}
-
       </Col>
       <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
         <PopularProfiles />
