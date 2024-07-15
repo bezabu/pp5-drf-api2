@@ -11,7 +11,7 @@ class Profile(models.Model):
     content = models.TextField(blank=True)
     # favourite
     image = models.ImageField(
-        upload_to='images/', default='../default_profile_kw0d6q'
+        upload_to='images/', default='../defaultusericon_afo27r'
     )
 
     class Meta:
