@@ -25,8 +25,7 @@ const Movie = (props) => {
         moviePage,
         setMovies,
     } = props
-    //console.log('GENRE')
-    //console.log(genre);
+
 
     const currentUser = useCurrentUser();
 

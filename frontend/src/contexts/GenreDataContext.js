@@ -23,7 +23,6 @@ export const GenreDataProvider = ({children}) => {
       const {data} = await axiosRes.get('/genres')
       setGenreData(data.results)
       for ( const [key, value] of Object.entries(genreData)) {
-        console.log(`${key}: ${value}`)
       }
     } catch(err){
       console.log(err)

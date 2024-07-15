@@ -26,8 +26,7 @@ const Movie = (props) => {
         setMovies,
     } = props
 
-    //console.log('GENRE')
-    //console.log(genre);
+
 
     const currentUser = useCurrentUser();
 
@@ -46,6 +45,7 @@ const Movie = (props) => {
         <Card.Img src={image} alt={title} className={styles.MovieImage}/>
         </Link>
         </Row>
+        {/*}
         <Row>
         {genre?.length ? (
                 genre.map((gen) => (
@@ -65,6 +65,7 @@ const Movie = (props) => {
               </Container>
             )}
         </Row>
+        */}
         <Row className={`${styles.MovieTextContainer}`}>
             
         Average rating: {reviews_avg} (<Link to={`/reviewsm/${id}`}> {reviews_count} reviews</Link> )<br></br>

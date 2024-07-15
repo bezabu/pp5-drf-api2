@@ -24,7 +24,7 @@ function ReviewCreateFormMovie() {
   useRedirect("loggedOut")
   const { movie } = useParams();
   const [errors, setErrors] = useState({});
-  console.log(movie)
+
 
 
     //const genreData = useGenreData();
@@ -84,13 +84,12 @@ function ReviewCreateFormMovie() {
     formData.append('movie', movie);
     formData.append('content', content);
     formData.append('rating', rating);
-    console.log(formData);
+
     
     try {
-      console.log('attempt review create');
-      console.log(content, rating, movie);
+
       const {data} = await axiosReq.post('/reviews/', formData);
-      console.log(data);
+
       history.push(`/reviews/${data.id}`)
     } catch(err) {
       console.log(err)

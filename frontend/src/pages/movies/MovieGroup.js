@@ -22,7 +22,7 @@ const MovieGroup = (props) => {
         {movies.results.map((movie) => (
                             <>
                             <Movie key={movie.id} {...movie} setMovies={setMovies} />
-                            {console.log(movie)}
+
                             </>
                         ))}
                     

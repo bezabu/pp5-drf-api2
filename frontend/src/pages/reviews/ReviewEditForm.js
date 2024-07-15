@@ -43,7 +43,7 @@ function ReviewEditForm() {
             const {content, rating, is_owner} = data;
             
             is_owner ? setReviewData({movie, content, rating}) : history.push('/')
-            console.log(reviewData);
+
         } catch(err) {
             console.log(err)
         }
@@ -65,7 +65,7 @@ function ReviewEditForm() {
         ...reviewData,
         rating: event.target.value,
       });
-      console.log(event.target.value)
+
   }
 
 
@@ -76,18 +76,15 @@ function ReviewEditForm() {
     event.preventDefault();
     const formData = new FormData();
 
-    console.log(movie);
+
     formData.append('movie', movie);
     formData.append('content', content);
     formData.append('rating', rating);
-    console.log(formData);
+
 
 
     try {
-      console.log('attempt review create');
-      console.log(formData);
       await axiosReq.put(`/reviews/${id}`, formData);
-      
       history.push(`/reviews/${id}`)
     } catch(err) {
       console.log(err)

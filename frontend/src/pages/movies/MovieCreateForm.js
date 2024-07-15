@@ -37,7 +37,7 @@ function MovieCreateForm() {
   const [movieData, setMovieData] = useState({
     title: "",
     year: "",
-    genre: '', 
+    genre: 1, 
     director: "",
     actors: "",
     image: "",
@@ -55,7 +55,7 @@ function MovieCreateForm() {
       ...movieData,
       [event.target.name]: event.target.value,
     });
-    console.log(movieData)
+
   };
 
   const handleChangeImage = (event) => {
@@ -85,11 +85,9 @@ function MovieCreateForm() {
     formData.append('image', imageInput.current.files[0]);
 
     try {
-      console.log('attempt movie create');
-      console.log(title, year, genre, director, actors, image);
+
       const {data} = await axiosReq.post('/movies/', formData);
-      console.log('data returned from attempt:')
-      console.log(data);
+
       history.push(`/movies/${data.id}`)
     } catch(err) {
       console.log(err)
@@ -102,29 +100,7 @@ function MovieCreateForm() {
   }
 
 
-  /*
-  useEffect(() => {
-    getGenreData()
-  }, []);
-
-
-  const getGenreData = async (event) => {
-
-    try{
-    const { data } = await axios.get("/genres");
-        setGenreData(data.results);
-    } catch(err){
-        console.log(err);
-    }
-
-  };
-  */
-  
-  
-  
-
-
-  const textFields = (
+   const textFields = (
     <div className="text-center">
       {/* Add your form fields here */}
 

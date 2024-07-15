@@ -50,10 +50,9 @@ function ReviewCreateForm() {
     formData.append('rating', rating);
     formData.append('movie', movie);
     try {
-      console.log('attempt review create');
-      console.log(content, rating, movie);
+
       const {data} = await axiosReq.post(`/reviews`, formData);
-      console.log(data);
+
       history.push(`/reviews/${data.id}`)
     } catch(err) {
       console.log(err)
@@ -89,7 +88,6 @@ function ReviewCreateForm() {
       try {
         fetchMovieData(query)
         setHasLoaded(true);
-        console.log(movieData.results)
       } catch(err){
         console.log(err)
       }
@@ -126,23 +124,16 @@ function ReviewCreateForm() {
             )}
             />
             </Form.Group>
-
             <Form.Group>
               <Form.Control as="select" onChange={handleChange} custom >
-
                 {hasLoaded ? (
                   <>
-                  {console.log(movieData?.results)}
                   {movieData?.results.length ? (
-
                     movieData.results.map((mov) => (
                       <>
-                      
                       <option key={movieData.results.id} {...mov} value={movieData.results.id}>{movieData.results.title}</option>
-                      
                       </>
                     ))
-
                   ) : (
                     <option disabled>No results</option>
                   )}

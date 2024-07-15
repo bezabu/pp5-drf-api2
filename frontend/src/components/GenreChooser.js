@@ -14,21 +14,19 @@ function GenreChooser({ genreKey, setGenreKey, message, filter = ""}, handleGenr
     const [genres, setGenres ] = useState({ results: [] });
     const [ hasLoaded, setHasLoaded ] = useState(false);
     const { pathname } = useLocation();
-    //console.log('FILTER:')
-    //console.log(filter);
+
     useEffect(() => {
         const fetchGenres = async () => {
             try {
                 const {data} = await axiosReq.get(`/genres`);
-                //console.log(data);
+
                 setGenres(data);
                 setHasLoaded(true);
-                console.log(hasLoaded);
+
             } catch(err){
                 console.log(err);
             }
-            //console.log('GENRES:')
-            //console.log(genres);
+
         };
 
         setHasLoaded(false);

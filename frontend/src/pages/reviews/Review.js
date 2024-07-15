@@ -2,7 +2,7 @@ import React from 'react'
 import styles from '../../styles/Review.module.css'
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Col, Container, Image, Media, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
-import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom'
+import { Link, useHistory, useLocation, useParams } from 'react-router-dom/cjs/react-router-dom'
 import Avatar from '../../components/Avatar'
 import { axiosRes } from '../../api/axiosDefaults';
 import { MoreDropdown } from '../../components/MoreDropdown';
@@ -101,10 +101,12 @@ const Review = (props) => {
   
   
     <Row className={`${styles.ReviewMedia} align--items-center justify-content-between`}>
-      <Col className={`${styles.ImageContainer}`} xs={12} sm={4}>
+      <Col className={`${styles.ImageContainer}`} xs={12} sm={4} fluid="true">
+      <Link to={`/movies/${movie}`}>
       <img className={styles.MovieImage} src={movie_image} alt={movie_title}/>
+      </Link>
       </Col>
-      <Col className={`${styles.ReviewContainerCol}`} xs={12} sm={8} fluid>
+      <Col className={`${styles.ReviewContainerCol}`} xs={12} sm={8}>
       <Row className={`${styles.ReviewContainerRow} justify-content-between`}>
         <Col className={`${styles.ProfileContainer} align--items-left`} >
         <Link to={`/profiles/${profile_id}`}>
@@ -112,8 +114,8 @@ const Review = (props) => {
             {owner}
           </Link>
         </Col>
-        <Col className={`${styles.Title}`} fluid>
-        {movie_title && <Card.Title className='text-center'><Link to={`/movies/${movie}`}>{movie_title}</Link></Card.Title>}
+        <Col className={`${styles.Title}`} fluid="true">
+        {movie_title && <Card.Title className='text-center'>{movie_title}</Card.Title>}
         </Col>
         <Col className={`${styles.DropDownContainer} align--items-right`}>
         {is_owner && reviewPage && (
@@ -125,10 +127,12 @@ const Review = (props) => {
         </Col>
       
       </Row>
+
       <Row className={styles.ContentContainer}>
       {content}
       </Row>
-      <Row className={`${styles.BottomRow} align--items-center justify-content-between`}>
+
+      <Row className={`${styles.BottomRow} align--items-center justify-content-between mt-auto`}>
         <Col>
       <p className={styles.ReviewStars}>
             {ratingStars(rating)}

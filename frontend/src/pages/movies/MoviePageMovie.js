@@ -26,8 +26,7 @@ function MoviePageMovie(props) {
         moviePage,
         setMovies,
     } = props
-    //console.log('GENRE')
-    //console.log(genre);
+
 
     const currentUser = useCurrentUser();
     
@@ -37,7 +36,7 @@ function MoviePageMovie(props) {
     const { data } = await Promise.all([
         axiosReq.get(`/movies/${id}`)
       ])
-      console.log(data)
+
 }
     
 
@@ -58,7 +57,7 @@ function MoviePageMovie(props) {
         <Card.Img src={image} alt={title} />
         </Link>
         <Card.Text>
-            {genre}
+            
             {genre?.length ? (
                 genre.map((gen) => (
                     <>
@@ -77,7 +76,7 @@ function MoviePageMovie(props) {
             )}
             
             
-            Average rating: {reviews_avg} (<Link to={`/reviewsm/${id}`}> {reviews_count} reviews</Link> )
+            Average rating: {reviews_avg} (<Link to={`/reviewsm/${id}`}> {reviews_count} reviews</Link> )<br></br>
             {director}<br></br>
             {actors}<br></br>
             {currentUser &&

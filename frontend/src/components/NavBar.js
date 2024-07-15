@@ -107,7 +107,7 @@ const NavBar = () => {
   return (
     <Navbar expanded={expanded} className={styles.NavBar} bg="light" expand="md" fixed="top">
 <NavLink to="/">
-  <Navbar.Brand><Container><img src={film_logo} alt="film logo" height="50"/><h1>Movie Reviews</h1></Container></Navbar.Brand>
+  <Navbar.Brand><Container><img src={film_logo} alt="film logo" height="50"/><h1 className={styles.Title}>Movie Reviews</h1></Container></Navbar.Brand>
   </NavLink>
   {/*currentUser && addMovieIcon*/}
   <Navbar.Toggle ref={ref} onClick={() => setExpanded(!expanded)} aria-controls="basic-navbar-nav" />

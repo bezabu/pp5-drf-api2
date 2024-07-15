@@ -65,7 +65,6 @@ const MoviesPage = ({ message, filter=""}) => {
                         movies.results.map((movie) => (
                             <>
                             <Movie key={movie.id} {...movie} setMovies={setMovies} className={`${styles.MoviesContainer}`} />
-                            {console.log(movie)}
                             </>
                         ))
                     }

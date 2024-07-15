@@ -26,7 +26,6 @@ function ReviewsPage({ message }) {
   useEffect(() => {
     const fetchReviews = async () => {
         try {
-          console.log(`/reviews/?movie=${movieId.id}`)
             const {data} = await axiosReq.get(`/reviews/?movie=${movieId.id}`);
             setReviews(data);
             setHasLoaded(true);

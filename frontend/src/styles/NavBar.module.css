@@ -6,12 +6,13 @@
 .NavLink {
     color: #202020;
     padding: 5px;
-
-
-
 }
 
-
+.Title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
 
 .NavLink:hover {
     color: #2747AD;
@@ -20,3 +21,4 @@
 .Active i {
     color: #4f4f4f;
 }
+

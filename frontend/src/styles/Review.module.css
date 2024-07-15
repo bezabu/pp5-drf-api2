@@ -53,7 +53,7 @@
 
   .ContentContainer {
     padding: 10px 0 10px 0;
-
+    min-height: 50%;
     
   }
 
@@ -64,6 +64,7 @@
 
 .BottomRow {
   margin: 10px 0 10px 0;
+  
 }
 
   .Title {

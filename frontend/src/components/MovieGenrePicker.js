@@ -11,15 +11,14 @@ function MovieGenrePicker() {
         const fetchGenres = async () => {
             try {
                 const {data} = await axiosReq.get(`/genres`);
-                //console.log(data);
+
                 setGenres(data);
                 setHasLoaded(true);
-                console.log(hasLoaded);
+ 
             } catch(err){
                 console.log(err);
             }
-            //console.log('GENRES:')
-            //console.log(genres);
+
         };
 
         setHasLoaded(false);
@@ -34,7 +33,7 @@ function MovieGenrePicker() {
       value={selectedGenre} // ...force the select's value to match the state variable...
       onChange={e => {
         setSelectedGenre(e.target.value)
-        console.log(e.target.value)
+
     }} // ... and update the state variable on any change!
     >
 {hasLoaded ? (
