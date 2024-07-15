@@ -39,7 +39,7 @@ const MoviesPage = ({ message, filter=""}) => {
         
     }, [filter, query, pathname]);
   return (
-    <Row>
+    <Row  className={`${styles.MoviesContainer} d-flex`}>
         <Col>
 
         <i className={`fas fa-search ${styles.SearchIcon}`} />
@@ -55,7 +55,7 @@ const MoviesPage = ({ message, filter=""}) => {
         />
         </Form>
 
-
+        <Row className={styles.MoviesContainer}>
         {hasLoaded ? (
             <>
             {movies.results.length ? (
@@ -63,10 +63,10 @@ const MoviesPage = ({ message, filter=""}) => {
                 <InfiniteScroll
                     children={
                         movies.results.map((movie) => (
-<>
-                            <Movie key={movie.id} {...movie} setMovies={setMovies} />
+                            <>
+                            <Movie key={movie.id} {...movie} setMovies={setMovies} className={`${styles.MoviesContainer}`} />
                             {console.log(movie)}
-</>
+                            </>
                         ))
                     }
                     dataLength={movies.results.length}
@@ -88,6 +88,7 @@ const MoviesPage = ({ message, filter=""}) => {
             <Asset spinner />
             </Container>
         )}
+        </Row>
         </Col>
     </Row>
   )

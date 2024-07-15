@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from '../../styles/Movie.module.css'
-import { Card, Col, Container, Media, Row } from 'react-bootstrap'
+import { Card, Container, Media } from 'react-bootstrap'
 import GenrePicker from './GenrePicker'
 import NoResults from "../../assets/no_results_inverted.png"
 import appStyles from "../../App.module.css";
@@ -25,33 +25,32 @@ const Movie = (props) => {
         moviePage,
         setMovies,
     } = props
-
     //console.log('GENRE')
     //console.log(genre);
 
     const currentUser = useCurrentUser();
 
   return (
-    <>
-        <Col className={`${styles.MovieContainer}`} xs={12} sm={6} md={3}>
-        <Row className={`${styles.InnerMovieContainer}`}>
-            <Col>
-            
-
-        <Row className={`${styles.MovieTitleContainer} align--items-center justify-content-between`}>
-        {title && <h2 className={`${styles.MovieTitle} text-center`}>{title} - ({year})</h2>}
-        </Row>
-        <Row className={styles.MovieImageContainer}>
+    <Card className={styles.Movie}>
+        <Card.Body>
+            <Media className="align--items-center justify-content-between">
+                <div className="d-flex align-items-center">
+                {is_curator && moviePage && "..."}
+                </div>
+            </Media>
+        </Card.Body>
+        <Card.Body>
+            {title && <Card.Title className='text-center'>{title} - {year}</Card.Title>}
+        </Card.Body>
         <Link to={`/movies/${id}`}>
-        <Card.Img src={image} alt={title} className={styles.MovieImage}/>
+        <Card.Img src={image} alt={title} />
         </Link>
-        </Row>
-        <Row>
-        {genre?.length ? (
+        <Card.Text>
+
+                {genre?.length ? (
                 genre.map((gen) => (
                     <>
                     <GenrePicker
-                    
                     //filter={gen}
                     filter={`id=${gen}&`}
                     key={gen} {...gen}
@@ -64,37 +63,16 @@ const Movie = (props) => {
                 <Asset src={NoResults} />
               </Container>
             )}
-        </Row>
-        <Row className={`${styles.MovieTextContainer}`}>
+
+            Average rating: {reviews_avg} (<Link to={`/reviewsm/${id}`}> {reviews_count} reviews</Link> )<br></br>
             
-        Average rating: {reviews_avg} (<Link to={`/reviewsm/${id}`}> {reviews_count} reviews</Link> )<br></br>
-        </Row>
-        <Row>   
-            Dir: {director}<br></br>
-            </Row>
-        <Row className={`${styles.Truncate} ${styles.Actors}`}>
+            {director}<br></br>
             {actors}<br></br>
-            </Row>
-            <Row className={`align--items-center justify-content-between`}>
             {currentUser &&
             <Link to={`/reviews/m/${id}`}>Write your own review!</Link>
-            }
-            
-        </Row>
-
-        </Col>
-        </Row>
-        </Col>
-        
-            
-        
-        
-        
-
-                
-
-            
-</> 
+}
+        </Card.Text>
+    </Card>
   )
 }
 

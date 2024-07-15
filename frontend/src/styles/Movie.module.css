@@ -22,3 +22,77 @@
   .HeartOutline:hover {
     color: #f85032;
   }
+
+  .MovieImage {
+    object-fit: cover;
+    min-width: 100%;
+
+    overflow: hidden;
+  }
+
+  .MovieImageContainer {
+
+    max-height: 350px;
+    overflow: hidden;
+  }
+  .MovieContainer {
+
+    margin: 0 0 20px 0;
+    display: inline-block;
+    min-height: 550px;
+
+  }
+
+  .MovieGenre {
+    font-size: 60%;
+  }
+
+  .InnerMovieContainer {
+    background-color: #242424;
+    margin: 0 1px 0 1px;
+    border: 1px solid #dadadf;
+    border-radius: 2px;
+    min-height: 90%;
+    text-align: center;
+  }
+
+  .MovieTitle {
+    text-align: center;
+    font-size: 120%;
+    color: #171717;
+  }
+  .MovieTitleContainer {
+    padding: 5px;
+    background-color: #dadadf;
+  }
+  .MovieTextcontainer {
+    padding: 10px;
+  }
+  .Actors {
+    max-height: 50px;
+  }
+
+  .Truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media only screen and (max-width: 992px) {
+    .MovieContainer {
+
+      min-height: 400px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .MovieContainer {
+      min-height: 300px;
+
+    }
+  }
+  @media only screen and (max-width: 576px) {
+    .MovieContainer {
+      min-height: 200px;
+
+    }
+  }
