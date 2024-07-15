@@ -44,3 +44,7 @@
   .SignUpCol {
     height: 375px;
   }
+
+  .SubmitButton {
+    background-color: #275f8c;
+  }

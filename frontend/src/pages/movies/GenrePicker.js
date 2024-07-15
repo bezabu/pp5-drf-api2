@@ -24,21 +24,16 @@ function GenrePicker({ filter = ""}) {
             } catch(err){
                 console.log(err);
             }
-
         };
-
         setHasLoaded(false);
         fetchGenres();
-        
     }, [filter, pathname]);
   return (
     <Row>
         <Col>
         {hasLoaded ? (
-            //has loaded
             <>
             {genres.results.length ? (
-                //has length
                 genres.results.map((genre) => (
                     <>
                     <GenreButton key={genre} {...genre} color={genre.color} name={genre.name} setGenres={setGenres} />
@@ -46,15 +41,12 @@ function GenrePicker({ filter = ""}) {
                     </>
                 ))
             ) : (
-                //no length
                 <Container>
                     <Asset src={NoResults}/>
                 </Container>
-                
             )}
             </>
         ) : (
-            //has not loaded
             <Container>
                 <Asset spinner />
             </Container>
