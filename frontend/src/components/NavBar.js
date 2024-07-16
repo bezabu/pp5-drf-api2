@@ -72,7 +72,7 @@ const NavBar = () => {
   return (
     <Navbar expanded={expanded} className={styles.NavBar} bg="light" expand="md" fixed="top">
 <NavLink to="/">
-  <Navbar.Brand><Container className={styles.NavBarTitle}><img src={film_logo} alt="film logo" height="50" width="50"/><h1 className={styles.Title}>Movie Reviews</h1></Container></Navbar.Brand>
+  <Navbar.Brand><Container className={styles.NavBarTitle}><img src={film_logo} alt="film logo" height="50" width="50"/><h1 className={styles.Title}>MiniReviews</h1></Container></Navbar.Brand>
   </NavLink>
   <Navbar.Toggle ref={ref} onClick={() => setExpanded(!expanded)} aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">

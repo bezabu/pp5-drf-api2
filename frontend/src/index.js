@@ -6,17 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { CurrentUserProvider } from './contexts/CurrentUserContext';
 import { ProfileDataProvider } from './contexts/ProfileDataContext';
-//import { GenreDataProvider } from './contexts/GenreDataContext';
 
 
 ReactDOM.render(
     <Router>
       <CurrentUserProvider>
-        {/*<GenreDataProvider>*/}
         <ProfileDataProvider>
           <App />
         </ProfileDataProvider>
-        {/*</GenreDataProvider>*/}
       </CurrentUserProvider>
     </Router>,
   document.getElementById('root')

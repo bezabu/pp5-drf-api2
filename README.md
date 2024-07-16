@@ -1,4 +1,4 @@
-# Movie Review App
+# Mini Review App
 
 ## Readme contents
 
@@ -21,6 +21,7 @@
 
 ## Features
 
+MiniReviews is a website that enables users to post their own film reviews. Reviews are intended to be short and sweet, like Twitter.
 
 ### Existing Features
 
@@ -42,8 +43,8 @@
 - Frontend
 
   - Nav bar
-
-    - Includes links to all parts of the website, allowing users to easily navigate between them. It changes depending on if a user is logged in. If a user is not logged in, it will show links to home, movies, sign in & sign up. If a user is logged in it will show links to home, movies, feed, popular, liked, sign out and profile. The nav bar collapses to a dropdown menu to save space on smaller devices.
+    - The NavBar is a reusable component that appears on every page.
+    - It includes links to all parts of the website, allowing users to easily navigate between them. It uses CurrentUserContext to determine if the user is logged in or not changes accordingly. If a user is not logged in, it will render links to home, movies, sign in & sign up. If a user is logged in it will render links to home, movies, feed, popular, liked, sign out and profile. The nav bar collapses to a dropdown menu to save space on smaller devices.
 
 ![Home page](/readme_assets/homepageloggedout.jpg)
 
@@ -57,6 +58,8 @@
 
     - Each review comprises some short text and a rating out of 5 stars (with 0 being the lowest option). Each review also has a tally of how many likes and comments it has. Comments are listed below the review.
 
+    - The reusable Review component is used to list reviews on the reviews page and on the detail page. It uses the review records passed to it as props to display the information.
+
 ![movies page](/readme_assets/moviespageloggedin.jpg)
 
   - Movies page
@@ -64,9 +67,11 @@
     - All movies are listed on the movies page. The user is able to use the search bar to find specific movies. Movie title, director and genre are all searchable.
 
   - Movie detail
-
+    
     - Each movie has an image of a poster, along with information such as the title, release date, director, genre & actors. Genres are displayed as colour-coded badges.
     - There is a link to a reviews page with only reviews of that partiular movie. There is also a link for the user to write their own review.
+    - The Movie component is used to display movie information. Similar to the review component it takes review information as props.
+    - The GenrePicker component is used to display the genres associated with the movie entry. It uses the genre ids passed as props and makes a request to the genres API endpoint to get the name and colour of each genre and also maps over the list of genres associated with the movie. For each one it passes name and colour as props to a GenreButton component wich renders the genre badge.
 
   - Profile
 
@@ -106,6 +111,8 @@
 
 ## User Stories
 
+User Stories can also be viewed [here](https://github.com/users/bezabu/projects/6/views/1)
+
 Navigation & Authentication
 - Navigation: As a user I can view a navbar from every page so that I can navigate easily between pages
 - Routing: As a user I can navigate through pages quickly so that I can view content seamlessly without page refresh
@@ -117,7 +124,7 @@ Navigation & Authentication
 - Avatar: As a user I can view user's avatars so that I can easily identify users of the application
 
 Adding & Liking Movies
-- Create reviews: As a logged in user I can add movies to the list of available movies to review
+- Create reviews: As a logged in user I can add movies to the list of available movies to review so I always have enough content
 - View a movie: As a user I can view the details of a single movie so that I can learn more about it
 - Like a movie: As a logged in user I can like a movie so that I can show my support for the films that interest me
 
@@ -127,7 +134,7 @@ Adding & Liking Reviews
 
 The Reviews Page
 - View most recent reviews: As a user I can view all the most recent reviews, ordered by most recently created first so that I am up to date with the newest content
-- As a user, I can search for reviews with keywords, so that I can find the reviews and user profiles I am most interested in.
+- Search for reviews: As a user, I can search for reviews with keywords, so that I can find the reviews and user profiles I am most interested in.
 - View liked reviews: As a logged in user I can view the reviews I liked so that I can find the reviews I enjoy the most
 - View popular reviews: As a logged in user I can view the most liked reviews so that I can find the reviews other users are enjoying the most
 - View reviews of followed users: As a logged in user I can view content filtered by users I follow so that I can keep up to date with what they are writing about
@@ -143,15 +150,15 @@ The Review Page
 - Edit a comment: As an owner of a comment I can edit my comment so that I can fix or update my existing comment
 
 The Movies Page
-- Movies page: As a user I can see a list of movies that can be reviewd
-- Movie reviews: As a logged in user I can click a link that will take me to a page where I can write a review of the specific movie
-- Movies statistics: As a user I can see how many reviews have been added for each movie and what the average score is
-- Mobile first design: As a user I can see different amounts of information depending on the screen size of the device I am using
+- View movies page: As a user I can see a list of movies that can be reviewed so that I can decide which one to write about
+- Create movie reviews: As a logged in user I can click a link that will take me to a page where I fill out a form so that I can write a review of a specific movie
+- Movies statistics: As a user I can see how many reviews have been added for each movie and what the average score is so that I can see what many users think
+- Mobile first design: As a user I can see different amounts of information depending on the screen size of the device I am using so that content is not stretched or squashed
 
 The Movie Page
 - Movie reviews: As a logged in user I can click a link that will take me to a page where I can write a review of the specific movie
 - Movies statistics: As a user I can see how many reviews have been added for each movie and what the average score is
-- Reviews list: As a user I can click on a link that will display a list of all reviews of that movie
+- Reviews list: As a user I can click on a link that will display a list of all reviews of that movie from it's page so that I can see all of the opinions about this movie in one place
 
 The Profile Page
 - Profile page: As a user I can view other users profiles so that I can see their reviews and learn more about them
@@ -163,15 +170,19 @@ The Profile Page
 - Update username and password: As a logged in user I can update my username and password so that I can change my display name and keep my profile secure
 
 
-
 ## Technologies
 
 - HTML has been used to structure the website.
 - CSS has been used to style the website.
 - JavaScript was used to create the front-end.
 - Python was used to create the back-end API.
-- [JS React](https://react.dev/) was used to create the one page front end application.
-- [Django Rest Framework](https://www.django-rest-framework.org/) was used to build the backend
+- [JS React](https://react.dev/) was used to create the single page front end.
+- [axios](https://axios-http.com/) was used to intercept requests and responses.
+- [jwt-decode]() was used to decode JSON web tokens.
+- [msw]() was used for mocking requests to the API.
+- [react-infinite-scroll-component]() was used for the infinite scroll.
+- [jest](https://jestjs.io/) was used for automated JS testing.
+- [Django Rest Framework](https://www.django-rest-framework.org/) was used to build the backend.
 - [ElephantSQL](https://customer.elephantsql.com/) was used to host the database.
 - [Cloudinary](https://cloudinary.com/) was used to store user uploaded images.
 - [React-Bootstrap 4.6](https://react-bootstrap-v4.netlify.app/) was used to create and style the front end of the website.
@@ -195,9 +206,33 @@ The Profile Page
 - [Wave Web Accessibility Evaluation Tool](https://wave.webaim.org/report#/https://bb-pp5-movie-review-app-363d95a342e4.herokuapp.com/) was used to test the website's accessibility.
 - Lighthouse was used to run an audit of the website.
 
+
+
 ## Testing
 
 ### Manual Testing
+
+#### Backend
+
+- Check API produces currectly formatted JSON
+
+  - Test:
+    - open the website in a browser
+    - enter the address of the genres, movies, reviews, profiles, comments, likes and follows API endpoints in the browser
+    - observe the output for each
+  - Result:
+    - JSON formatted data is returned
+    - The data matches the records shown in the ElephantSQL panel
+
+- Check the API produces the an appropriate response to requests for things that do not exist
+  - Test:
+    - open the website in a browser
+    - enter the addess of the movies API endpoint, but add an id for a non existant record
+    - observe the status code
+  - Result:
+    - A 404 status code is returned
+
+#### Frontend
 
 - Check responsiveness in different browsers (Chrome, Firefox, Edge, Opera)
 
