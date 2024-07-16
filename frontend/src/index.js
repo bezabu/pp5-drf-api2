@@ -10,7 +10,6 @@ import { ProfileDataProvider } from './contexts/ProfileDataContext';
 
 
 ReactDOM.render(
-  <React.StrictMode>
     <Router>
       <CurrentUserProvider>
         {/*<GenreDataProvider>*/}
@@ -19,8 +18,7 @@ ReactDOM.render(
         </ProfileDataProvider>
         {/*</GenreDataProvider>*/}
       </CurrentUserProvider>
-    </Router>
-  </React.StrictMode>,
+    </Router>,
   document.getElementById('root')
 );
 
