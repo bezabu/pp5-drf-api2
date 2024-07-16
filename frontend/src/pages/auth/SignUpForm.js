@@ -86,7 +86,7 @@ const SignUpForm = () => {
     <Form.Control
     className={styles.Input}
     type="password"
-    placeholder="confirm assword"
+    placeholder="confirm password"
     name="password2"
     value={password2}
     onChange={handleChange}
