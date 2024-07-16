@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from .models import Review, Movie
+from .models import Review, Movie, Genre
 from rest_framework import status
 from rest_framework.test import APITestCase
 
@@ -7,10 +7,17 @@ from rest_framework.test import APITestCase
 class ReviewListViewTests(APITestCase):
     def setUp(self):
         User.objects.create_user(username='ben', password='pass')
+        Genre.objects.create(name='thriller', color='FFFFFF')    
         Movie.objects.create(title='movie', year='2012-06-15',
         director='Steve',
         genre='thriller', actors='terry, bob, joan',
         image='https://res.cloudinary.com/djxclxygo/image/upload/v1/clapper_board_vector_oi5zxv')
+
+    def test_can_list_genres(self):
+        ben = User.objects.get(username='ben')
+        response = self.client.get('/genres/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        print(len(response.data))
 
     def test_can_list_movies(self):
         ben = User.objects.get(username='ben')
@@ -48,6 +55,7 @@ class ReviewDetailViewTests(APITestCase):
     def setUp(self):
         ben = User.objects.create_user(username='ben', password='pass')
         olga = User.objects.create_user(username='olga', password='pass')
+        Genre.objects.create(name='thriller', color='FFFFFF') 
         Movie.objects.create(
             title='movie', year='2012-06-15', director='Steve',
             genre='thriller', actors='terry, bob, joan',
