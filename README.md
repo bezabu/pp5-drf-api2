@@ -22,16 +22,34 @@
 
 ## Features
 
-![Entity relationship diagram](/readme_assets/erd.png)
 
 ### Existing Features
 
-- API
+- Backend
+
+![Entity relationship diagram](/readme_assets/erd.png)
+
+  - Database
+    - The backend connects to a database of movies and reviews.
 
   - API endpoints
-
+    - API endpoints are as follows:
 
 - Frontend
+
+  - Nav bar
+
+  - Reviews page
+
+  - Review detail
+
+  - Movies page
+
+  - Moive detail
+
+  - Profile
+
+  - Review form
 
 ### Features to implement
 
@@ -81,9 +99,19 @@ All functionality that required the user to be logged in would result in a 403 s
 
 ### Automated Testing
 
-
+All JS tests passed
+![automated tests](/readme_assets/tests.jpg)
 
 ### Validator Testing
+
+HTML passes through the W3C Markup Validation Service with no errors
+
+CSS passes through the W3C CSS Validation Service with no errors
+
+When using the WebAIM Web Accessibility Evaluation Tool, 3 alerts were returned:
+
+![WAVE tool results](/readme_assets/wave.jpg)
+
 
 ### Unfixed Bugs
 
