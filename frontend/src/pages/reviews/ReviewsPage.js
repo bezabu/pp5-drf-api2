@@ -71,6 +71,7 @@ function ReviewsPage({ message, filter="" }) {
                     loader={<Asset spinner />}
                     hasMore={!!reviews.next}
                     next={() => fetchMoreData(reviews, setReviews)}
+                    style={{overflow: 'hidden'}}
                 />
             ) : (
                 <Container className={appStyles.Content}>
