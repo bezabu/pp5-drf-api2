@@ -1,6 +1,10 @@
 from django.db import models
 
+
 class Genre(models.Model):
+    """
+    Genre model, category of movie
+    """
     name = models.CharField(max_length=255, blank=False)
     color = models.SlugField(max_length=7, blank=False)
 

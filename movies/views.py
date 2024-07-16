@@ -4,8 +4,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.core.exceptions import PermissionDenied
 from .models import Movie
 from .serializers import MovieSerializer
-from pp5_drf_api2.permissions import IsOwnerOrReadOnly, HasMoviePermissions, IsCuratorOrReadOnly
-
+from pp5_drf_api2.permissions import (
+    IsOwnerOrReadOnly, HasMoviePermissions, IsCuratorOrReadOnly)
 
 
 class MovieList(generics.ListCreateAPIView):
@@ -13,12 +13,12 @@ class MovieList(generics.ListCreateAPIView):
     List all movies
     No Create view
     """
-    
+
     queryset = Movie.objects.annotate(
         reviews_count=Count('reviews', distinct=True),
         reviews_avg=Avg('reviews__rating')
     ).order_by('-reviews_count')
-    
+
     serializer_class = MovieSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filter_backends = [
@@ -39,8 +39,6 @@ class MovieList(generics.ListCreateAPIView):
         'director',
         'genre',
     ]
-    
-    
 
 
 class MovieCreate(generics.CreateAPIView):
@@ -49,9 +47,7 @@ class MovieCreate(generics.CreateAPIView):
     Only accessible by movie curators
     """
     serializer_class = MovieSerializer
-    #permission_classes = [permissions.IsAuthenticated]
     permission_classes = [permissions.IsAuthenticated, IsCuratorOrReadOnly]
-
 
 
 class MovieDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -60,9 +56,6 @@ class MovieDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     serializer_class = MovieSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    #permission_classes = [IsCuratorOrReadOnly]
     queryset = Movie.objects.annotate(
         reviews_count=Count('reviews', distinct=True)
     ).order_by('-reviews_count')
-
-

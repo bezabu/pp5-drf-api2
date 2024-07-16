@@ -3,16 +3,23 @@ from genres.models import Genre
 
 
 class Movie(models.Model):
+    """
+    Movie model
+    'genre' is an instance of Genre
+    default images set
+    """
     title = models.CharField(max_length=255, blank=True)
-    year = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
+    year = models.DateField(
+        auto_now=False, auto_now_add=False, blank=True, null=True
+    )
     director = models.CharField(max_length=255, blank=True)
-    #genre = models.CharField(max_length=255, blank=True)
     genre = models.ManyToManyField(
         Genre, related_name='movies', default=1
     )
     actors = models.CharField(max_length=255, blank=True)
     image = models.ImageField(
-        upload_to='images/', default='../clapper_board_vector_oi5zxv', blank=True
+        upload_to='images/', default='../clapper_board_vector_oi5zxv',
+        blank=True
     )
 
     class Meta:

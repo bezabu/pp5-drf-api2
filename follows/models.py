@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Follow(models.Model):
     """
-    Follower model, related to 'owner' and 'followed'.
+    Follows model, related to 'owner' and 'followed'.
     'owner' is a User that is following a User.
     'followed' is a User that is followed by 'owner'.
     We need the related_name attribute so that django can differentiate.

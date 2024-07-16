@@ -6,7 +6,6 @@ from .serializers import ReviewSerializer
 from pp5_drf_api2.permissions import IsOwnerOrReadOnly
 
 
-
 class ReviewList(generics.ListCreateAPIView):
     """
     List reviews or create a review if logged in

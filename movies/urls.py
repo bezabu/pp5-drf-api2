@@ -6,6 +6,3 @@ urlpatterns = [
     path('movies/add/', views.MovieCreate.as_view()),
     path('movies/<int:pk>', views.MovieDetail.as_view()),
 ]
-
-
-

@@ -64,6 +64,8 @@
 - [Heroku](https://dashboard.heroku.com/) was used to deploy the website to the web.
 - Git was used for version control, pushing contents to GitHub.
 - [Am I Responsive](https://ui.dev/amiresponsive?url=https://bb-pp5-movie-review-app-363d95a342e4.herokuapp.com/) was used to create the mock-up.
+- [W3C Markup Validation Service ](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbb-pp5-movie-review-app-363d95a342e4.herokuapp.com%2F)was used to check HTML.
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fbb-pp5-movie-review-app-363d95a342e4.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)was used to check CSS.
 
 ## Testing
 

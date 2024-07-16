@@ -5,11 +5,13 @@ from comments.models import Comment
 
 VOTE_DIRECTION = ((0, 'neutral'), (1, 'up'), (2, 'down'))
 
+
 class Vote(models.Model):
     """
-    Like model, related to 'owner' and 'post'.
-    'owner' is a User instance and 'post' is a Post instance.
-    'unique_together' makes sure a user can't like the same post twice.
+    Vote model, related to 'owner' and 'review'.
+    'owner' is a User instance and 'comment' is a Comment instance.
+    'unique_together' makes sure a user can't up/down vote the same comment
+    twice.
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.ForeignKey(

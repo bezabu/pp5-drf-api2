@@ -4,8 +4,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.core.exceptions import PermissionDenied
 from .models import Genre
 from .serializers import GenreSerializer
-from pp5_drf_api2.permissions import IsOwnerOrReadOnly, HasMoviePermissions, IsCuratorOrReadOnly
-
+from pp5_drf_api2.permissions import (IsOwnerOrReadOnly,
+HasMoviePermissions, IsCuratorOrReadOnly)
 
 
 class GenreList(generics.ListAPIView):
@@ -13,12 +13,10 @@ class GenreList(generics.ListAPIView):
     List all genres
     No Create view
     """
-    
     queryset = Genre.objects.annotate(
         movies_count=Count('movies', distinct=True),
         movies_avg=Avg('movies__reviews__rating')
     ).order_by('-movies_count')
-    
     serializer_class = GenreSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filter_backends = [
@@ -32,7 +30,7 @@ class GenreList(generics.ListAPIView):
         'moviess_count',
         'moviess_avg',
     ]
-    
+
 
 class GenreCreate(generics.CreateAPIView):
     """
@@ -42,15 +40,13 @@ class GenreCreate(generics.CreateAPIView):
     serializer_class = GenreSerializer
     permission_classes = [permissions.IsAuthenticated, IsCuratorOrReadOnly]
 
+
 class GenreDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve a movie and edit or delete it if you own it.
     """
     serializer_class = GenreSerializer
     permission_classes = [HasMoviePermissions]
-    #permission_classes = [IsCuratorOrReadOnly]
     queryset = Genre.objects.annotate(
         movies_count=Count('movies', distinct=True)
     ).order_by('-movies_count')
-
-

@@ -1,13 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
 from movies.models import Movie
-from django.core.validators import MaxValueValidator, MinValueValidator 
+from django.core.validators import MaxValueValidator, MinValueValidator
 
-RATING = ((0, "0 stars"), (1, "1 star"), (2, "2 stars"), (3, "3 stars"), (4, "4 stars"), (5, "5 stars"))
-
+RATING = (
+    (0, "0 stars"), (1, "1 star"), (2, "2 stars"), (3, "3 stars"),
+    (4, "4 stars"), (5, "5 stars"))
 
 
 class Review(models.Model):
+    """
+    Review model, related to User and Movie
+    'owner' is an instance of User
+    'movie' is an instance of Movie
+    """
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="reviews")
     movie = models.ForeignKey(
