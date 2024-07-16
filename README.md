@@ -5,8 +5,7 @@
 - [Features](#features)
   - [Existing Features](#existing-features)
   - [Features to implement](#features-to-implement)
-- [User Experience Design](#user-experience-design)
-  - [User Stories](#user-stories)
+- [User Stories](#user-stories)
 - [Technologies](#technologies)
 - [Testing](#testing)
   - [Manual Testing](#manual-testing)
@@ -30,41 +29,68 @@
 ![Entity relationship diagram](/readme_assets/erd.png)
 
   - Database
-    - The backend connects to a database of movies and reviews.
+
+    - The backend connects to a database of movies and reviews. Records can be added or retrieved through several API endpoints useing the Django rest framework. 
 
 ![API endpoints](/readme_assets/APIendpoints.jpg)
 
   - API endpoints
-    - The diagram above shows an example of some of the API endpoints
+
+    - The diagram above shows some of the API endpoints concerning the bulk of the content; genres, movies and reviews. There are also endpoints for likes and follows.
     - 
 
 - Frontend
 
   - Nav bar
 
+    - Includes links to all parts of the website, allowing users to easily navigate between them. It changes depending on if a user is logged in. If a user is not logged in, it will show links to home, movies, sign in & sign up. If a user is logged in it will show links to home, movies, feed, popular, liked, sign out and profile. The nav bar collapses to a dropdown menu to save space on smaller devices.
+
 ![Home page](/readme_assets/homepageloggedout.jpg)
 
   - Reviews page
+
+    - The reviews page list recent reviews. The feed, liked and popular pages are all variants of this page. The feed page shows only content by profiles that the user has followed. The liked page only shows reviews that the user has liked. The popular page shows all reviews ordered by nmber of likes.
 
 ![Home page](/readme_assets/revewdetailwithcomments.jpg)
 
   - Review detail
 
+    - Each review comprises some short text and a rating out of 5 stars (with 0 being the lowest option). Each review also has a tally of how many likes and comments it has. Comments are listed below the review.
+
 ![movies page](/readme_assets/moviespageloggedin.jpg)
 
   - Movies page
 
-  - Moive detail
+    - All movies are listed on the movies page. The user is able to use the search bar to find specific movies. Movie title, director and genre are all searchable.
+
+  - Movie detail
+
+    - Each movie has an image of a poster, along with information such as the title, release date, director, genre & actors. Genres are displayed as colour-coded badges.
+    - There is a link to a reviews page with only reviews of that partiular movie. There is also a link for the user to write their own review.
 
   - Profile
+
+    - The profile page shows statistics such as number of reviews written, followers and how many other users they are following. There is also a small bio section and all reviews by the user are listed below. The user can edit their own profile from this page.
 
 ![profile page](/readme_assets/profilepage.jpg)
 
   - Review form
 
+    - The review form page includes an image of the movie, a field for the user to write their review and a bit where users can rate the movie out of 5.
+
 ![sign in page](/readme_assets/signin.jpg)
 
   - Sign in/Sign up pages
+
+    - Allows users to sign in or out of the website, and also to sign up for an account.
+
+![sign in page](/readme_assets/notfound.jpg)
+
+  - Page not found page
+    - If a user enters an URL that is not recognised, the user will be informed.
+
+  - Favicon
+    - The website has a custom favicon to distinguish it from other websites
 
 ### Features to implement
 
@@ -76,9 +102,9 @@
 
 - A way for users to like comments similar to how they can with reviews
 
-## User Experience Design
 
-### User Stories
+
+## User Stories
 
 Navigation & Authentication
 - Navigation: As a user I can view a navbar from every page so that I can navigate easily between pages
@@ -145,8 +171,7 @@ The Profile Page
 - JavaScript was used to create the front-end.
 - Python was used to create the back-end API.
 - [JS React](https://react.dev/) was used to create the one page front end application.
-- [Django](https://www.djangoproject.com/) was the framework used to build this website.
-- [Django Rest Framework](https://www.django-rest-framework.org/) was used to build the back end API
+- [Django Rest Framework](https://www.django-rest-framework.org/) was used to build the backend
 - [ElephantSQL](https://customer.elephantsql.com/) was used to host the database.
 - [Cloudinary](https://cloudinary.com/) was used to store user uploaded images.
 - [React-Bootstrap 4.6](https://react-bootstrap-v4.netlify.app/) was used to create and style the front end of the website.
@@ -295,11 +320,11 @@ When viewed on a mobile device, movie images do not quite take up the whole widt
 
 ## Deployment
 
-The following steps were taken to deploy this project to Heroku:
+The frontend and backend of this project have been combined into one repository, and therefore one heroku app. The following steps were taken to deploy this project to Heroku:
 
 1. Create new app in Heroku, selecting Europe as the region
 
-2. In Settings, config vars, add the config vars CLOUDINARY_URL, DATABASE_URL, DISABLE_COLLECTSTATIC, ALLOWED_HOST, CLIENT_ORIGIN and SECRET_KEY
+2. In Settings, config vars, add the config vars CLOUDINARY_URL, DATABASE_URL, DISABLE_COLLECTSTATIC, ALLOWED_HOST, CLIENT_ORIGIN and SECRET_KEY, ensuring that ALLOWED_HOST and CLIENT_ORIGIN are the URL of the hosted heroku site.
 
 3. In the Deploy section, go to deployment method, select GitHub, search for the repository and click connect.
 
@@ -317,10 +342,10 @@ Movie details such as director, release date etc. were taken from wikipedia.
 
 ### Media
 
-Site logo adapted from [this image](https://freerangestock.com/photos/119591/cinema-vector-icon.html) from free range stock
-No results icon from [very icon](https://www.veryicon.com/icons/commerce-shopping/jkd_wap/no-result.html)
-Default user icon from [vectorstock](https://www.vectorstock.com/royalty-free-vector/black-user-icon-vector-42797437)
-File upload icon from [fontawesome via wikipedia](https://commons.wikimedia.org/wiki/File:Font_Awesome_5_solid_file-upload.svg)
+- Site logo adapted from [this image](https://freerangestock.com/photos/119591/cinema-vector-icon.html) from free range stock
+- No results icon from [very icon](https://www.veryicon.com/icons/commerce-shopping/jkd_wap/no-result.html)
+- Default user icon from [vectorstock](https://www.vectorstock.com/royalty-free-vector/black-user-icon-vector-42797437)
+- File upload icon from [fontawesome via wikipedia](https://commons.wikimedia.org/wiki/File:Font_Awesome_5_solid_file-upload.svg)
 
 ### Code
 
