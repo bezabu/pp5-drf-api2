@@ -382,5 +382,5 @@ Movie details such as director, release date etc. were taken from wikipedia.
 - Default user icon from [vectorstock](https://www.vectorstock.com/royalty-free-vector/black-user-icon-vector-42797437)
 - File upload icon from [fontawesome via wikipedia](https://commons.wikimedia.org/wiki/File:Font_Awesome_5_solid_file-upload.svg)
 
-### Code
+
 
