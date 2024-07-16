@@ -62,7 +62,19 @@
 
   - Review form
 
+![sign in page](/readme_assets/signin.jpg)
+
+  - Sign in/Sign up pages
+
 ### Features to implement
+
+- A form for users to add movies to the database, allowing the user to upload an image and choose from a list of genres
+
+- A way for users to like movies similar to how they can with reviews
+
+- A 'favourite movies' section on the profile page
+
+- A way for users to like comments similar to how they can with reviews
 
 ## User Experience Design
 
@@ -162,9 +174,101 @@ The Profile Page
 
 ### Manual Testing
 
+- Check responsiveness in different browsers (Chrome, Firefox, Edge, Opera)
+
+  - Test:
+    - Open the website in a browser
+    - Right click on the page and select 'Inspect' or 'Inspect element'
+    - Slowly resize the responsive window down to 300px and back again,     - observing changes at each breakpoint
+  - Result:
+    - All media queries work correctly
+
+- Check that the Navbar shows the correct links depending on wether the user is logged in
+
+  - Test:
+    - Open the website in a browser
+    - Ensure the user is not logged in
+    - click on the sign in link
+    - Sign in to the swebsite
+    - observe changes in nav bar
+  - Result:
+    - The sign in & sign up links are only shown if the user is logged out, and the profile, liked, feed etc. links are only shown if the user is logged in
+
+- Check all navigation links point to correct pages
+
+  - Test:
+    - Open the website in a browser
+    - Log in
+    - Click on all links in the navigation bar (home, movies, feed, popular, liked, sign out) from each page to ensure they lead to the correct pages.
+  - Result:
+    - All links work correctly
+
+- Check the movies page content displays correctly
+  - Test:
+    - Open the website in a browser
+    - Log in
+    - Navigate to the movies page
+    - Enter a film title in the search bar
+    - resize the window
+    - enter a genre name in the search bar
+    - observe the page
+  - Result:
+    - Movie information is readable at all sizes, regardless of how many results are displayed
+
+- Check that a user can add a review
+  - Test:
+    - Open the website in a browser
+    - Log in
+    - Navigate to the movies page
+    - click on the 'Write your own review' link
+    - fill out the content field and select a rating
+    - click screate
+    - observe new review detail page
+  - Result:
+    - A new review is created
+
+- Check that a user can add a comment
+  - Test:
+    - Open the website in a browser
+    - Log in
+    - click on the comments icon of a review
+    - fill out the comment field and click post
+    - observe new comment
+  - Result:
+    - A new comment is posted
+
+- Check that a user can edit or delete a comment
+  - Test:
+    - Open the website in a browser
+    - Log in
+    - click on the comments icon of a review
+    - fill out the comment field and click post
+    - click on the three dots to bring up the menu
+    - click edit
+    - observe the comment field
+    - make a change to the text and click save
+    - click on the three dots to bring up the menu again
+    - select delete
+    - observe the lack of comment
+  - Result:
+    - Comments can be edited/deleted
+
+- Check that users cannot edit or delete comments or reviews that they did not write
+  - Test:
+    - Open the website in a browser
+    - Log in
+    - Navigate to the movies page
+    - Add a review
+    - Add a comment to that review
+    - log out
+    - navigate to the same review
+    - observe the lack of edit/delete button
+    - log in as a different user
+    - observe the lack of edit/delete button
 
 
-All functionality that required the user to be logged in would result in a 403 status code with no CSRF token in the request. This mysteriously stopped the day before submission. I did NOTHING.
+
+
 
 ### Automated Testing
 
@@ -184,7 +288,7 @@ When using the WebAIM Web Accessibility Evaluation Tool, 3 alerts were returned:
 
 ### Unfixed Bugs
 
-
+When viewed on a mobile device, movie images do not quite take up the whole width of the screen, leaving a small gutter on the right
 
 
 
@@ -200,7 +304,6 @@ The following steps were taken to deploy this project to Heroku:
 3. In the Deploy section, go to deployment method, select GitHub, search for the repository and click connect.
 
 4. Scroll down to Manual Deploy, ensure the main branch is selected and click Deploy Branch
-
 
 
 The deployed app may be found [here](https://bb-pp5-movie-review-app-363d95a342e4.herokuapp.com/)
