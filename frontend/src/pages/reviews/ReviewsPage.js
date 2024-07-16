@@ -50,6 +50,7 @@ function ReviewsPage({ message, filter="" }) {
         onSubmit={(event) => event.preventDefault()}
         >
         <Form.Control
+        id="search"
         type="text"
         className="mr-sm-2"
         placeholder="search reviews"
